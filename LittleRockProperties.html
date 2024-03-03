@@ -22,8 +22,12 @@
             padding-bottom: 80px; /* Adjusted to accommodate smaller footer */
             box-sizing: border-box; /* Include padding in total height */
         }
-        header {
-            background-color: #333; /* Updated header background color */
+        header, footer {
+            height: 0.5in; /* Half inch height */
+            width: calc(100% - 40px); /* Same width as container */
+            max-width: 1200px; /* Maximum width */
+            margin: 0 auto; /* Center horizontally */
+            background-color: #333; /* Updated header and footer background color */
             color: #fff;
             padding: 10px;
             display: flex;
@@ -46,18 +50,7 @@
         }
         .contact-info {
             text-align: center; /* Align contact info to the center */
-            background-color: #333; /* Updated footer background color */
-            color: #fff;
             padding: 5px;
-            position: absolute; /* Position absolute to bottom */
-            bottom: 0; /* Position at the bottom */
-            left: 50%; /* Position at center */
-            transform: translateX(-50%); /* Center horizontally */
-            z-index: 1; /* Ensure it's above other content */
-            width: 50%; /* Half the width of the viewport */
-            max-width: 300px; /* Maximum width */
-            height: 0.5in; /* Half inch height */
-            overflow: hidden; /* Hide any overflowing content */
         }
         nav {
             text-align: center;
