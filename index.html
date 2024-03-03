@@ -84,8 +84,6 @@
             padding: 10px;
             transition: box-shadow 0.3s ease;
             cursor: pointer;
-            text-decoration: none;
-            color: #333;
         }
         .property:hover {
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -102,10 +100,6 @@
         .property p {
             font-size: 14px;
             line-height: 1.4;
-            display: none; /* Hide property info by default */
-        }
-        .property:hover p {
-            display: block; /* Display property info on hover */
         }
         .property-info {
             display: none;
@@ -147,53 +141,99 @@
             <a href="SocialsEvents.html">Socials & Events</a>
         </div>
     </header>
-    <div class="container">
+<div class="container">
         <section>
-            <a href="Properties/property1.html" class="property">
+            <div class="property" onclick="togglePropertyInfo(this)">
                 <img src="PropertyPics/h1.jpg" alt="Property 1">
-                <p>Location: Property 1 Location</p>
-                <p>Price: $X</p>
-            </a>
-            <a href="Properties/property2.html" class="property">
+                <div class="property-info">
+                    <h2>Property 1</h2>
+                    <p>Location: Property 1 Location</p>
+                    <p>Price: $X</p>
+                    <p>More information about Property 1.</p>
+                    <a href="Properties/property1.html">See More</a>
+                </div>
+            </div>
+            <!-- Repeat the above div for each property -->
+            <div class="property" onclick="togglePropertyInfo(this)">
                 <img src="PropertyPics/h2.jpg" alt="Property 2">
-                <p>Location: Property 2 Location</p>
-                <p>Price: $Y</p>
-            </a>
-            <a href="Properties/property3.html" class="property">
+                <div class="property-info">
+                    <h2>Property 2</h2>
+                    <p>Location: Property 2 Location</p>
+                    <p>Price: $Y</p>
+                    <p>More information about Property 2.</p>
+                    <a href="Properties/property2.html">See More</a>
+                </div>
+            </div>
+            <div class="property" onclick="togglePropertyInfo(this)">
                 <img src="PropertyPics/h3.jpg" alt="Property 3">
-                <p>Location: Property 3 Location</p>
-                <p>Price: $Z</p>
-            </a>
-            <a href="Properties/property4.html" class="property">
+                <div class="property-info">
+                    <h2>Property 3</h2>
+                    <p>Location: Property 3 Location</p>
+                    <p>Price: $Z</p>
+                    <p>More information about Property 3.</p>
+                    <a href="Properties/property3.html">See More</a>
+                </div>
+            </div>
+            <div class="property" onclick="togglePropertyInfo(this)">
                 <img src="PropertyPics/h4.jpg" alt="Property 4">
-                <p>Location: Property 4 Location</p>
-                <p>Price: $W</p>
-            </a>
-            <a href="Properties/property5.html" class="property">
+                <div class="property-info">
+                    <h2>Property 4</h2>
+                    <p>Location: Property 4 Location</p>
+                    <p>Price: $W</p>
+                    <p>More information about Property 4.</p>
+                    <a href="Properties/property4.html">See More</a>
+                </div>
+            </div>
+            <div class="property" onclick="togglePropertyInfo(this)">
                 <img src="PropertyPics/h5.jpg" alt="Property 5">
-                <p>Location: Property 5 Location</p>
-                <p>Price: $V</p>
-            </a>
-            <a href="Properties/property6.html" class="property">
+                <div class="property-info">
+                    <h2>Property 5</h2>
+                    <p>Location: Property 5 Location</p>
+                    <p>Price: $V</p>
+                    <p>More information about Property 5.</p>
+                    <a href="Properties/property5.html">See More</a>
+                </div>
+            </div>
+            <div class="property" onclick="togglePropertyInfo(this)">
                 <img src="PropertyPics/h6.jpg" alt="Property 6">
-                <p>Location: Property 6 Location</p>
-                <p>Price: $U</p>
-            </a>
-            <a href="Properties/property7.html" class="property">
+                <div class="property-info">
+                    <h2>Property 6</h2>
+                    <p>Location: Property 6 Location</p>
+                    <p>Price: $U</p>
+                    <p>More information about Property 6.</p>
+                    <a href="Properties/property6.html">See More</a>
+                </div>
+            </div>
+            <div class="property" onclick="togglePropertyInfo(this)">
                 <img src="PropertyPics/h7.jpg" alt="Property 7">
-                <p>Location: Property 7 Location</p>
-                <p>Price: $T</p>
-            </a>
-            <a href="Properties/property8.html" class="property">
+                <div class="property-info">
+                    <h2>Property 7</h2>
+                    <p>Location: Property 7 Location</p>
+                    <p>Price: $T</p>
+                    <p>More information about Property 7.</p>
+                    <a href="Properties/property7.html">See More</a>
+                </div>
+            </div>
+            <div class="property" onclick="togglePropertyInfo(this)">
                 <img src="PropertyPics/h8.jpg" alt="Property 8">
-                <p>Location: Property 8 Location</p>
-                <p>Price: $S</p>
-            </a>
-            <a href="Properties/property9.html" class="property">
+                <div class="property-info">
+                    <h2>Property 8</h2>
+                    <p>Location: Property 8 Location</p>
+                    <p>Price: $S</p>
+                    <p>More information about Property 8.</p>
+                    <a href="Properties/property8.html">See More</a>
+                </div>
+            </div>
+            <div class="property" onclick="togglePropertyInfo(this)">
                 <img src="PropertyPics/h9.jpg" alt="Property 9">
-                <p>Location: Property 9 Location</p>
-                <p>Price: $R</p>
-            </a>
+                <div class="property-info">
+                    <h2>Property 9</h2>
+                    <p>Location: Property 9 Location</p>
+                    <p>Price: $R</p>
+                    <p>More information about Property 9.</p>
+                    <a href="Properties/property9.html">See More</a>
+                </div>
+            </div>
         </section>
     </div>
     <footer class="contact-info" id="mainFooter">
@@ -202,5 +242,16 @@
         <p><a href="https://calendly.com/">Calendly</a></p>
         <p>@BryanFendley</p>
     </footer>
+    <script>
+        function togglePropertyInfo(property) {
+            property.classList.toggle('active');
+            adjustFooterMargin();
+        }
+
+        function adjustFooterMargin() {
+            var footerHeight = document.getElementById('mainFooter').offsetHeight;
+            document.getElementById('mainHeader').style.marginBottom = footerHeight + 'px';
+        }
+    </script>
 </body>
 </html>
