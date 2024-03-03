@@ -19,7 +19,8 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            padding-bottom: 60px;
+            padding-bottom: 120px; /* Adjusted to accommodate footer */
+            box-sizing: border-box; /* Include padding in total height */
         }
         header {
             background-color: #333; /* Updated header background color */
@@ -28,6 +29,10 @@
             display: flex;
             justify-content: space-between; /* Align buttons to the right */
             align-items: center;
+            position: fixed; /* Fixed position to stay at the top */
+            top: 0; /* Position at the top */
+            width: 100%; /* Occupy full width */
+            z-index: 1000; /* Ensure it's above other content */
         }
         .header-buttons {
             display: flex;
@@ -43,13 +48,16 @@
         }
         .contact-info {
             text-align: center; /* Align contact info to the center */
-        }
-        .contact-info p {
-            margin: 5px 0;
+            position: fixed; /* Fixed position to stay at the bottom */
+            bottom: 0; /* Position at the bottom */
+            width: 100%; /* Occupy full width */
+            background-color: #333; /* Updated footer background color */
+            color: #fff;
+            padding: 10px;
         }
         nav {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 60px; /* Adjusted to provide space below header */
         }
         nav a {
             display: inline-block;
@@ -65,7 +73,7 @@
             background-color: #ddd;
         }
         section {
-            margin-top: 50px;
+            margin-top: 20px; /* Adjusted to provide space below navigation */
             display: grid;
             grid-template-columns: repeat(3, 1fr); /* 3 columns */
             gap: 20px; /* Gap between items */
@@ -126,15 +134,6 @@
         .property-info a:hover {
             background-color: #555;
         }
-        footer {
-            text-align: center;
-            padding: 10px 0;
-            background-color: #333;
-            color: #fff;
-            width: 100%;
-            position: absolute;
-            bottom: 0;
-        }
     </style>
 </head>
 <body>
@@ -144,9 +143,14 @@
             <a href="AboutUs.html">About V</a>
             <a href="SocialsEvents.html">Socials & Events</a>
         </div>
-        <h1>Real Estate Agency</h1>
+        <h1 style="margin: 0;">Real Estate Agency</h1>
     </header>
     <div class="container">
+        <nav>
+            <a href="contact.html">Contact Me</a>
+            <a href="AboutUs.html">About V</a>
+            <a href="SocialsEvents.html">Socials & Events</a>
+        </nav>
         <section>
             <div class="property" onclick="togglePropertyInfo(this)">
                 <img src="PropertyPics/h1.jpg" alt="Property 1">
@@ -158,95 +162,117 @@
                     <a href="Properties/property1.html">See More</a>
                 </div>
             </div>
+            <!-- Repeat the above div for each property -->
+        </section>
+            <section>
             <div class="property" onclick="togglePropertyInfo(this)">
-                <img src="PropertyPics/h2.jpg" alt="Property 2">
+                <img src="PropertyPics/h1.jpg" alt="Property 1">
                 <div class="property-info">
-                    <h2>Property 2</h2>
-                    <p>Location: Property 2 Location</p>
-                    <p>Price: $Y</p>
-                    <p>More information about Property 2.</p>
-                    <a href="Properties/property2.html">See More</a>
+                    <h2>Property 1</h2>
+                    <p>Location: Property 1 Location</p>
+                    <p>Price: $X</p>
+                    <p>More information about Property 1.</p>
+                    <a href="Properties/property1.html">See More</a>
                 </div>
             </div>
             <!-- Repeat the above div for each property -->
+        </section>
+            <section>
             <div class="property" onclick="togglePropertyInfo(this)">
-                <img src="PropertyPics/h3.jpg" alt="Property 3">
+                <img src="PropertyPics/h1.jpg" alt="Property 1">
                 <div class="property-info">
-                    <h2>Property 3</h2>
-                    <p>Location: Property 3 Location</p>
-                    <p>Price: $Z</p>
-                    <p>More information about Property 3.</p>
-                    <a href="Properties/property3.html">See More</a>
+                    <h2>Property 1</h2>
+                    <p>Location: Property 1 Location</p>
+                    <p>Price: $X</p>
+                    <p>More information about Property 1.</p>
+                    <a href="Properties/property1.html">See More</a>
                 </div>
             </div>
+            <!-- Repeat the above div for each property -->
+        </section>
+            <section>
             <div class="property" onclick="togglePropertyInfo(this)">
-                <img src="PropertyPics/h4.jpg" alt="Property 4">
+                <img src="PropertyPics/h1.jpg" alt="Property 1">
                 <div class="property-info">
-                    <h2>Property 4</h2>
-                    <p>Location: Property 4 Location</p>
-                    <p>Price: $W</p>
-                    <p>More information about Property 4.</p>
-                    <a href="Properties/property4.html">See More</a>
+                    <h2>Property 1</h2>
+                    <p>Location: Property 1 Location</p>
+                    <p>Price: $X</p>
+                    <p>More information about Property 1.</p>
+                    <a href="Properties/property1.html">See More</a>
                 </div>
             </div>
+            <!-- Repeat the above div for each property -->
+        </section>
+            <section>
             <div class="property" onclick="togglePropertyInfo(this)">
-                <img src="PropertyPics/h5.jpg" alt="Property 5">
+                <img src="PropertyPics/h1.jpg" alt="Property 1">
                 <div class="property-info">
-                    <h2>Property 5</h2>
-                    <p>Location: Property 5 Location</p>
-                    <p>Price: $V</p>
-                    <p>More information about Property 5.</p>
-                    <a href="Properties/property5.html">See More</a>
+                    <h2>Property 1</h2>
+                    <p>Location: Property 1 Location</p>
+                    <p>Price: $X</p>
+                    <p>More information about Property 1.</p>
+                    <a href="Properties/property1.html">See More</a>
                 </div>
             </div>
+            <!-- Repeat the above div for each property -->
+        </section>
+            <section>
             <div class="property" onclick="togglePropertyInfo(this)">
-                <img src="PropertyPics/h6.jpg" alt="Property 6">
+                <img src="PropertyPics/h1.jpg" alt="Property 1">
                 <div class="property-info">
-                    <h2>Property 6</h2>
-                    <p>Location: Property 6 Location</p>
-                    <p>Price: $U</p>
-                    <p>More information about Property 6.</p>
-                    <a href="Properties/property6.html">See More</a>
+                    <h2>Property 1</h2>
+                    <p>Location: Property 1 Location</p>
+                    <p>Price: $X</p>
+                    <p>More information about Property 1.</p>
+                    <a href="Properties/property1.html">See More</a>
                 </div>
             </div>
+            <!-- Repeat the above div for each property -->
+        </section>
+            <section>
             <div class="property" onclick="togglePropertyInfo(this)">
-                <img src="PropertyPics/h7.jpg" alt="Property 7">
+                <img src="PropertyPics/h1.jpg" alt="Property 1">
                 <div class="property-info">
-                    <h2>Property 7</h2>
-                    <p>Location: Property 7 Location</p>
-                    <p>Price: $T</p>
-                    <p>More information about Property 7.</p>
-                    <a href="Properties/property7.html">See More</a>
+                    <h2>Property 1</h2>
+                    <p>Location: Property 1 Location</p>
+                    <p>Price: $X</p>
+                    <p>More information about Property 1.</p>
+                    <a href="Properties/property1.html">See More</a>
                 </div>
             </div>
+            <!-- Repeat the above div for each property -->
+        </section>
+            <section>
             <div class="property" onclick="togglePropertyInfo(this)">
-                <img src="PropertyPics/h8.jpg" alt="Property 8">
+                <img src="PropertyPics/h1.jpg" alt="Property 1">
                 <div class="property-info">
-                    <h2>Property 8</h2>
-                    <p>Location: Property 8 Location</p>
-                    <p>Price: $S</p>
-                    <p>More information about Property 8.</p>
-                    <a href="Properties/property8.html">See More</a>
+                    <h2>Property 1</h2>
+                    <p>Location: Property 1 Location</p>
+                    <p>Price: $X</p>
+                    <p>More information about Property 1.</p>
+                    <a href="Properties/property1.html">See More</a>
                 </div>
             </div>
+            <!-- Repeat the above div for each property -->
+        </section>
+            <section>
             <div class="property" onclick="togglePropertyInfo(this)">
-                <img src="PropertyPics/h9.jpg" alt="Property 9">
+                <img src="PropertyPics/h1.jpg" alt="Property 1">
                 <div class="property-info">
-                    <h2>Property 9</h2>
-                    <p>Location: Property 9 Location</p>
-                    <p>Price: $R</p>
-                    <p>More information about Property 9.</p>
-                    <a href="Properties/property9.html">See More</a>
+                    <h2>Property 1</h2>
+                    <p>Location: Property 1 Location</p>
+                    <p>Price: $X</p>
+                    <p>More information about Property 1.</p>
+                    <a href="Properties/property1.html">See More</a>
                 </div>
             </div>
+            <!-- Repeat the above div for each property -->
         </section>
     </div>
-    <footer>
-        <div class="contact-info">
-            <p>Email: example@example.com</p>
-            <p>Phone: 123-456-7890</p>
-            <p><a href="https://calendly.com/">Calendly</a></p>
-        </div>
+    <footer class="contact-info">
+        <p>Email: example@example.com</p>
+        <p>Phone: 123-456-7890</p>
+        <p><a href="https://calendly.com/">Calendly</a></p>
         <p>@BryanFendley</p>
     </footer>
     <script>
