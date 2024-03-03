@@ -10,7 +10,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9; /* Updated background color */
+            background-color: #f0f0f0; /* Updated background color */
             color: #333;
             min-height: 100vh;
             position: relative;
@@ -22,13 +22,19 @@
             padding-bottom: 60px;
         }
         header {
-            background-color: #4CAF50; /* Updated header background color */
+            background-color: #333; /* Updated header background color */
             color: #fff;
             padding: 10px;
-            text-align: center;
-            position: absolute;
-            width: 100%;
-            bottom: 0;
+            display: flex;
+            justify-content: flex-start; /* Align to the left */
+            align-items: center;
+        }
+        .contact-info {
+            text-align: left; /* Align contact info to the left */
+            margin-left: 20px; /* Add some space from the left */
+        }
+        .contact-info p {
+            margin: 5px 0;
         }
         nav {
             text-align: center;
@@ -50,9 +56,9 @@
         section {
             margin-top: 50px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Even spacing for properties */
-            gap: 20px;
-            justify-content: center;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            gap: 20px; /* Gap between items */
+            justify-content: space-evenly; /* Center items horizontally */
         }
         .property {
             position: relative;
@@ -112,7 +118,7 @@
         footer {
             text-align: center;
             padding: 10px 0;
-            background-color: #4CAF50; /* Updated footer background color */
+            background-color: #333;
             color: #fff;
             width: 100%;
             position: absolute;
@@ -121,14 +127,19 @@
     </style>
 </head>
 <body>
+    <header>
+        <div class="contact-info">
+            <p>Email: example@example.com</p>
+            <p>Phone: 123-456-7890</p>
+            <p><a href="https://calendly.com/">Calendly</a></p>
+        </div>
+    </header>
     <div class="container">
-        <header>
-            <nav>
-                <a href="contact.html">Contact Me</a>
-                <a href="AboutUs.html">About V</a>
-                <a href="SocialsEvents.html">Socials & Events</a>
-            </nav>
-        </header>
+        <nav>
+            <a href="contact.html">Contact Me</a>
+            <a href="AboutUs.html">About V</a>
+            <a href="SocialsEvents.html">Socials & Events</a>
+        </nav>
         <section>
             <div class="property" onclick="togglePropertyInfo(this)">
                 <img src="PropertyPics/h1.jpg" alt="Property 1">
@@ -140,7 +151,6 @@
                     <a href="Properties/property1.html">See More</a>
                 </div>
             </div>
-            <!-- Repeat the above div for each property -->
             <div class="property" onclick="togglePropertyInfo(this)">
                 <img src="PropertyPics/h2.jpg" alt="Property 2">
                 <div class="property-info">
@@ -151,6 +161,7 @@
                     <a href="Properties/property2.html">See More</a>
                 </div>
             </div>
+            <!-- Repeat the above div for each property -->
             <div class="property" onclick="togglePropertyInfo(this)">
                 <img src="PropertyPics/h3.jpg" alt="Property 3">
                 <div class="property-info">
