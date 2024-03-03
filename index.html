@@ -26,12 +26,23 @@
             color: #fff;
             padding: 10px;
             display: flex;
-            justify-content: flex-start; /* Align to the left */
+            justify-content: space-between; /* Align buttons to the right */
             align-items: center;
         }
+        .header-buttons {
+            display: flex;
+        }
+        .header-buttons a {
+            margin-right: 20px; /* Add spacing between buttons */
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .header-buttons a:hover {
+            color: #ddd;
+        }
         .contact-info {
-            text-align: left; /* Align contact info to the left */
-            margin-left: 20px; /* Add some space from the left */
+            text-align: center; /* Align contact info to the center */
         }
         .contact-info p {
             margin: 5px 0;
@@ -128,18 +139,14 @@
 </head>
 <body>
     <header>
-        <div class="contact-info">
-            <p>Email: example@example.com</p>
-            <p>Phone: 123-456-7890</p>
-            <p><a href="https://calendly.com/">Calendly</a></p>
-        </div>
-    </header>
-    <div class="container">
-        <nav>
+        <div class="header-buttons">
             <a href="contact.html">Contact Me</a>
             <a href="AboutUs.html">About V</a>
             <a href="SocialsEvents.html">Socials & Events</a>
-        </nav>
+        </div>
+        <h1>Real Estate Agency</h1>
+    </header>
+    <div class="container">
         <section>
             <div class="property" onclick="togglePropertyInfo(this)">
                 <img src="PropertyPics/h1.jpg" alt="Property 1">
@@ -235,6 +242,11 @@
         </section>
     </div>
     <footer>
+        <div class="contact-info">
+            <p>Email: example@example.com</p>
+            <p>Phone: 123-456-7890</p>
+            <p><a href="https://calendly.com/">Calendly</a></p>
+        </div>
         <p>@BryanFendley</p>
     </footer>
     <script>
