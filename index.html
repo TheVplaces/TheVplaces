@@ -19,7 +19,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            padding-bottom: 120px; /* Adjusted to accommodate footer */
+            padding-bottom: 80px; /* Adjusted to accommodate smaller footer */
             box-sizing: border-box; /* Include padding in total height */
         }
         header {
@@ -29,9 +29,7 @@
             display: flex;
             justify-content: space-between; /* Align elements */
             align-items: center;
-            position: fixed; /* Fixed position to stay at the top */
-            top: 0; /* Position at the top */
-            width: 100%; /* Occupy full width */
+            position: relative; /* Relative position to adjust margin */
             z-index: 1000; /* Ensure it's above other content */
         }
         .header-buttons {
@@ -48,12 +46,11 @@
         }
         .contact-info {
             text-align: center; /* Align contact info to the center */
-            position: fixed; /* Fixed position to stay at the bottom */
-            bottom: 0; /* Position at the bottom */
-            width: 100%; /* Occupy full width */
             background-color: #333; /* Updated footer background color */
             color: #fff;
             padding: 10px;
+            position: relative; /* Relative position to adjust margin */
+            z-index: 1; /* Ensure it's above other content */
         }
         nav {
             text-align: center;
@@ -137,14 +134,14 @@
     </style>
 </head>
 <body>
-    <header>
+    <header id="mainHeader">
         <div class="header-buttons">
             <a href="contact.html">Contact Me</a>
             <a href="AboutUs.html">About V</a>
             <a href="SocialsEvents.html">Socials & Events</a>
         </div>
     </header>
-    <div class="container">
+<div class="container">
         <section>
             <div class="property" onclick="togglePropertyInfo(this)">
                 <img src="PropertyPics/h1.jpg" alt="Property 1">
@@ -239,7 +236,7 @@
             </div>
         </section>
     </div>
-    <footer class="contact-info">
+    <footer class="contact-info" id="mainFooter">
         <p>Email: example@example.com</p>
         <p>Phone: 123-456-7890</p>
         <p><a href="https://calendly.com/">Calendly</a></p>
@@ -248,6 +245,12 @@
     <script>
         function togglePropertyInfo(property) {
             property.classList.toggle('active');
+            adjustFooterMargin();
+        }
+
+        function adjustFooterMargin() {
+            var footerHeight = document.getElementById('mainFooter').offsetHeight;
+            document.getElementById('mainHeader').style.marginBottom = footerHeight + 'px';
         }
     </script>
 </body>
