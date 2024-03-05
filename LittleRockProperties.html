@@ -78,7 +78,7 @@
             margin-top: 90px; /* Adjusted to provide space below header and above footer */
             margin-bottom: 90px; /* Adjusted to provide space above footer */
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            grid-template-columns: repeat(1, 1fr); /* 1 column */
             gap: 20px; /* Gap between items */
             justify-content: space-evenly; /* Center items horizontally */
         }
@@ -180,43 +180,14 @@
                     <a href="https://www.vrbo.com/4657269ha">VRBO</a>
                 </div>
             </div>
-            <div class="property" onclick="togglePropertyInfo(this)">
-                <img src="PropertyPics/h3.jpg" alt="Property 4">
-                <div class="property-info">
-                    <h2>Property 4</h2>
-                    <p>Location: Property 4 Location</p>
-                    <p>Price: $W</p>
-                    <p>More information about Property 4.</p>
-                    <a href="Properties/property4.html">See More</a>
-                </div>
-            </div>
-            <div class="property" onclick="togglePropertyInfo(this)">
-                <img src="PropertyPics/h5.jpg" alt="Property 5">
-                <div class="property-info">
-                    <h2>Property 5</h2>
-                    <p>Location: Property 5 Location</p>
-                    <p>Price: $V</p>
-                    <p>More information about Property 5.</p>
-                    <a href="Properties/property5.html">See More</a>
-                </div>
-            </div>
-            <div class="property" onclick="togglePropertyInfo(this)">
-                <img src="PropertyPics/h6.jpg" alt="Property 6">
-                <div class="property-info">
-                    <h2>Property 6</h2>
-                    <p>Location: Property 6 Location</p>
-                    <p>Price: $U</p>
-                    <p>More information about Property 6.</p>
-                    <a href="Properties/property6.html">See More</a>
-                </div>
-            </div>
         </section>
     </div>
     <footer class="contact-info" id="mainFooter">
-        <p>Email: example@example.com</p>
-        <p>Phone: 123-456-7890</p>
-        <p><a href="https://calendly.com/">Calendly</a></p>
-        <p>@BryanFendley</p>
+        <nav>
+            <a href="#page1">Page 1</a>
+            <a href="#page2">Page 2</a>
+            <a href="#page3">Page 3</a>
+        </nav>
     </footer>
     <script>
         function togglePropertyInfo(property) {
