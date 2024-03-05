@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Agency</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0; /* Updated background color */
+            color: #333;
+            min-height: 100vh;
+            position: relative;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-bottom: 80px; /* Adjusted to accommodate smaller footer */
+            box-sizing: border-box; /* Include padding in total height */
+        }
+        header, footer {
+            height: 0.5in; /* Half inch height */
+            width: 100%; /* Extend to full width */
+            background-color: #333; /* Updated header and footer background color */
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between; /* Align elements */
+            align-items: center;
+            position: fixed; /* Fixed position for header and footer */
+            left: 0; /* Align to the left */
+            z-index: 1000; /* Ensure it's above other content */
+        }
+        .header-buttons {
+            display: flex;
+        }
+        .header-buttons a {
+            margin-right: 20px; /* Add spacing between buttons */
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .header-buttons a:hover {
+            color: #ddd;
+        }
+        .contact-info {
+            text-align: center; /* Align contact info to the center */
+            background-color: #333; /* Updated footer background color */
+            color: #fff;
+            padding: 10px;
+            position: fixed; /* Fixed position for footer */
+            bottom: 0; /* Align to the bottom */
+            left: 0; /* Align to the left */
+            width: 100%; /* Extend to full width */
+        }
+        nav {
+            text-align: center;
+            margin-top: 60px; /* Adjusted to provide space below header */
+        }
+        nav a {
+            display: inline-block;
+            margin: 0 10px;
+            color: #333;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #ddd;
+        }
+        section {
+            margin-top: 90px; /* Adjusted to provide space below header and above footer */
+            margin-bottom: 90px; /* Adjusted to provide space above footer */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Dynamic columns */
+            gap: 20px; /* Gap between items */
+            justify-content: space-evenly; /* Center items horizontally */
+        }
+        .property {
+            position: relative;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            padding: 10px;
+            transition: box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .property:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .property img {
+            max-width: 100%;
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+        .property:hover img {
+            transform: scale(1.1);
+        }
+        .property p {
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .property-info {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            z-index: 1;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .property:hover .property-info {
+            display: block;
+        }
+        .property-info h2 {
+            margin-top: 0;
+        }
+        .property-info a {
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+            color: #fff;
+            background-color: #333;
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .property-info a:hover {
+            background-color: #555;
+        }
+        .page-links {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .page-links a {
+            margin: 0 5px;
+            color: #333;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header id="mainHeader">
+        <div class="header-buttons">
+            <a href="contact.html">Contact Me</a>
+            <a href="AboutUs.html">About V</a>
+            <a href="SocialsEvents.html">Socials & Events</a>
+        </div>
+    </header>
+    <div class="container">
+        <section>
+            <div class="property" onclick="togglePropertyInfo(this)">
+                <img src="PropertyPics/h9.jpg" alt="Property 1">
+                <div class="property-info">
+                    <h2>Property 1</h2>
+                    <p>Location: Property 1 Location</p>
+                    <p>Price: $X</p>
+                    <p>More information about Property 1.</p>
+                    <a href="Properties/property1.html">See More</a>
+                </div>
+            </div>
+            <!-- Repeat the above div for each property -->
+            <div class="property" onclick="togglePropertyInfo(this)">
+                <img src="PropertyPics/h2.jpg" alt="Property 2">
+                <div class="property-info">
+                    <h2>Property 2</h2>
+                    <p>Location: Property 2 Location</p>
+                    <p>Price: $Y</p>
+                    <p>More information about Property 2.</p>
+                    <a href="Properties/property2.html">See More</a>
+                </div>
+            </div>
+            <div class="property" onclick="togglePropertyInfo(this)">
+                <img src="PropertyPics/RuthHouse1.avif" alt="Property 3">
+                <div class="property-info">
+                    <h2>Property 3</h2>
+                    <p>Location: Property 3 Location</p>
+                    <p>Price: $Z</p>
+                    <p>More information about Property 3.</p>                    
+                    <a href="https://www.vrbo.com/4657269ha">VRBO</a>
+                </div>
+            </div>
+        </section>
+      <div class="page-links">
+            <a href="LittleRockProperties1.html">1</a>
+            <a href="LittleRockProperties2.html">2</a>
+            <a href="LittleRockProperties3.html">3</a>
+        </div>
+    </div>
+    <footer class="contact-info" id="mainFooter">
+        <p>Email: example@example.com</p>
+        <p>Phone: 123-456-7890</p>
+        <p><a href="https://calendly.com/">Calendly</a></p>
+        <p>@BryanFendley</p>
+    </footer>
+    <script>
+        function togglePropertyInfo(property) {
+            property.classList.toggle('active');
+            adjustFooterMargin();
+        }
+
+        function adjustFooterMargin() {
+            var footerHeight = document.getElementById('mainFooter').offsetHeight;
+            document.getElementById('mainHeader').style.marginBottom = footerHeight + 'px';
+        }
+    </script>
+</body>
+</html>
