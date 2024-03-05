@@ -78,7 +78,7 @@
             margin-top: 90px; /* Adjusted to provide space below header and above footer */
             margin-bottom: 90px; /* Adjusted to provide space above footer */
             display: grid;
-            grid-template-columns: repeat(1, 1fr); /* 1 column */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Dynamic columns */
             gap: 20px; /* Gap between items */
             justify-content: space-evenly; /* Center items horizontally */
         }
@@ -95,7 +95,8 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         .property img {
-            width: 100%;
+            max-width: 100%;
+            height: auto; /* Maintain aspect ratio */
             border-radius: 5px;
             margin-bottom: 10px;
             transition: transform 0.3s ease;
@@ -136,6 +137,15 @@
         }
         .property-info a:hover {
             background-color: #555;
+        }
+        .page-links {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .page-links a {
+            margin: 0 5px;
+            color: #333;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -183,11 +193,11 @@
         </section>
     </div>
     <footer class="contact-info" id="mainFooter">
-        <nav>
-            <a href="#page1">Page 1</a>
-            <a href="#page2">Page 2</a>
-            <a href="#page3">Page 3</a>
-        </nav>
+        <div class="page-links">
+            <a href="#page1">1</a>
+            <a href="#page2">2</a>
+            <a href="#page3">3</a>
+        </div>
     </footer>
     <script>
         function togglePropertyInfo(property) {
