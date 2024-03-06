@@ -13,8 +13,8 @@
             color: #333;
         }
         .container {
-            max-width: 100%;
-            margin: 20px;
+            max-width: 800px;
+            margin: 20px auto;
             padding: 20px;
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -26,17 +26,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap; /* Wrap header items */
         }
         .header-buttons {
             margin-top: 10px;
-            flex: 1; /* Take up remaining space */
-            text-align: center; /* Center buttons */
         }
         .header-buttons a {
             color: #fff;
             text-decoration: none;
-            margin: 0 10px;
+            margin-right: 10px;
             padding: 5px 10px;
             border-radius: 5px;
             transition: background-color 0.3s ease;
@@ -47,21 +44,20 @@
         .bio {
             display: flex;
             align-items: flex-start;
-            flex-wrap: wrap; /* Wrap bio items */
+            flex-wrap: wrap;
         }
         .bio img {
-            width: 100%;
-            max-width: 200px;
+            width: 200px;
             height: auto;
-            margin-bottom: 20px;
+            margin-right: 20px;
         }
         .bio-text {
             flex: 1;
-            margin-left: 20px;
         }
-        h1 {
-            font-size: 24px;
-            margin-bottom: 10px;
+        h2.title {
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-align: center;
         }
         p {
             font-size: 16px;
@@ -72,15 +68,14 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Meet Ruth - Your Dedicated Short-Term Rental Hostess</h1>
             <div class="header-buttons">
                 <a href="#">Home</a>
                 <a href="#">Contact</a>
                 <a href="#">Properties</a>
             </div>
         </div>
+        <h2 class="title">Meet Ruth - Your Dedicated Short-Term Rental Hostess</h2>
         <div class="bio">
-            <img src="ruth_headshot.jpg" alt="Ruth - Short-Term Rental Hostess">
             <div class="bio-text">
                 <p>With a passion for hospitality and a keen eye for detail, Ruth ensures that every guest enjoys a seamless and unforgettable stay in her properties.</p>
                 <p>Born and raised in the heart of the charming town she now calls home, Ruth's deep-rooted familiarity with the area shines through in every aspect of her hosting. Whether it's recommending hidden gems for dining, sharing insider tips on local attractions, or suggesting off-the-beaten-path activities, Ruth's knowledge is unparalleled.</p>
@@ -88,6 +83,7 @@
                 <p>What truly sets Ruth apart is her lightning-fast response time and personalized travel assistance. Whether guests have a question about the property, need help planning their itinerary, or simply want recommendations for the best coffee shops in town, Ruth is always just a message away. With her warm and attentive approach, she goes above and beyond to tailor each guest's experience to their unique preferences and needs.</p>
                 <p>From complimentary welcome baskets to curated lists of local attractions, Ruth's thoughtful amenities and personalized touches ensure that every guest feels valued and cared for. Whether you're visiting for a weekend getaway or an extended stay, Ruth is dedicated to making your time in her properties truly unforgettable.</p>
             </div>
+            <img src="ruth_headshot.jpg" alt="Ruth - Short-Term Rental Hostess">
         </div>
     </div>
 </body>
