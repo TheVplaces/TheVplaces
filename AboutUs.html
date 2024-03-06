@@ -13,8 +13,8 @@
             color: #333;
         }
         .container {
-            max-width: 800px;
-            margin: 20px auto;
+            max-width: 100%;
+            margin: 20px;
             padding: 20px;
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -26,11 +26,17 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap; /* Wrap header items */
+        }
+        .header-buttons {
+            margin-top: 10px;
+            flex: 1; /* Take up remaining space */
+            text-align: center; /* Center buttons */
         }
         .header-buttons a {
             color: #fff;
             text-decoration: none;
-            margin-right: 10px;
+            margin: 0 10px;
             padding: 5px 10px;
             border-radius: 5px;
             transition: background-color 0.3s ease;
@@ -41,14 +47,17 @@
         .bio {
             display: flex;
             align-items: flex-start;
+            flex-wrap: wrap; /* Wrap bio items */
         }
         .bio img {
-            width: 200px;
+            width: 100%;
+            max-width: 200px;
             height: auto;
-            margin-right: 20px;
+            margin-bottom: 20px;
         }
         .bio-text {
             flex: 1;
+            margin-left: 20px;
         }
         h1 {
             font-size: 24px;
@@ -63,6 +72,7 @@
 <body>
     <div class="container">
         <div class="header">
+            <h1>Meet Ruth - Your Dedicated Short-Term Rental Hostess</h1>
             <div class="header-buttons">
                 <a href="#">Home</a>
                 <a href="#">Contact</a>
@@ -72,7 +82,6 @@
         <div class="bio">
             <img src="ruth_headshot.jpg" alt="Ruth - Short-Term Rental Hostess">
             <div class="bio-text">
-                <h1>Meet Ruth - Your Dedicated Short-Term Rental Hostess</h1>
                 <p>With a passion for hospitality and a keen eye for detail, Ruth ensures that every guest enjoys a seamless and unforgettable stay in her properties.</p>
                 <p>Born and raised in the heart of the charming town she now calls home, Ruth's deep-rooted familiarity with the area shines through in every aspect of her hosting. Whether it's recommending hidden gems for dining, sharing insider tips on local attractions, or suggesting off-the-beaten-path activities, Ruth's knowledge is unparalleled.</p>
                 <p>Ruth takes great pride in maintaining impeccably clean properties, ensuring that each guest feels right at home from the moment they step through the door. With her meticulous attention to cleanliness and comfort, guests can rest assured that they'll enjoy a relaxing and hygienic environment throughout their stay.</p>
