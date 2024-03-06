@@ -19,6 +19,25 @@
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-buttons a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 10px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .header-buttons a:hover {
+            background-color: #555;
+        }
         .bio {
             display: flex;
             align-items: flex-start;
@@ -43,6 +62,13 @@
 </head>
 <body>
     <div class="container">
+        <div class="header">
+            <div class="header-buttons">
+                <a href="#">Home</a>
+                <a href="#">Contact</a>
+                <a href="#">Properties</a>
+            </div>
+        </div>
         <div class="bio">
             <img src="ruth_headshot.jpg" alt="Ruth - Short-Term Rental Hostess">
             <div class="bio-text">
