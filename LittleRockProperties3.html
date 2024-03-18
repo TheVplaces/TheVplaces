@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real Estate Agency</title>
     <style>
-        /* Add your CSS styles here */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0; /* Updated background color */
+            background-color: #f0f0f0;
             color: #333;
             min-height: 100vh;
             position: relative;
@@ -19,7 +18,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            box-sizing: border-box; /* Include padding in total height */
+            box-sizing: border-box;
         }
         header {
             height: 50px;
@@ -32,10 +31,8 @@
             align-items: center;
             position: fixed;
             left: 0;
+            top: 0;
             z-index: 1000;
-        }
-        .header-buttons {
-            display: flex;
         }
         .header-buttons a {
             margin-right: 20px;
@@ -47,14 +44,12 @@
             color: #ddd;
         }
         section {
-            margin-top: 90px;
+            padding-top: 70px; /* Adjusted to ensure content is not hidden behind the fixed header */
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
-            justify-content: space-evenly;
         }
         .property {
-            position: relative;
             border: 1px solid #ddd;
             border-radius: 5px;
             background-color: #fff;
@@ -62,52 +57,15 @@
             transition: box-shadow 0.3s ease;
             cursor: pointer;
         }
-        .property:hover {
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
         .property img {
-            max-width: 100%;
-            height: auto;
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
             border-radius: 5px;
             margin-bottom: 10px;
-            transition: transform 0.3s ease;
-        }
-        .property:hover img {
-            transform: scale(1.1);
-        }
-        .property p {
-            font-size: 14px;
-            line-height: 1.4;
         }
         .property-info {
             display: none;
-            position: absolute;
-            background-color: #fff;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            z-index: 1;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .property:hover .property-info {
-            display: block;
-        }
-        .property-info h2 {
-            margin-top: 0;
-        }
-        .property-info a {
-            display: block;
-            margin-top: 10px;
-            text-align: center;
-            color: #fff;
-            background-color: #333;
-            padding: 5px 10px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-        .property-info a:hover {
-            background-color: #555;
         }
         .page-links {
             text-align: center;
@@ -118,66 +76,101 @@
             color: #333;
             text-decoration: none;
         }
+        /* Overlay styles */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1050;
+            justify-content: center;
+            align-items: center;
+        }
+        .overlay-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+        }
     </style>
 </head>
 <body>
     <header id="mainHeader">
         <div class="header-buttons">
             <a href="index.html">Home</a>
-            <a href="AboutUs.html">About V</a>
+            <a href="AboutUs.html">About Us</a>
             <a href="SocialsEvents.html">Events</a>
         </div>
     </header>
     <div class="container">
         <section>
-            <div class="property" onclick="togglePropertyInfo(this)">
-                <img src="PropertyPics/h9.jpg" alt="Property 1">
-                <div class="property-info">
-                    <h2>Property 1</h2>
-                    <p>Location: Property 1 Location</p>
-                    <p>Price: $X</p>
-                    <p>More information about Property 1.</p>
-                    <a href="Properties/property1.html">See More</a>
-                </div>
+            <!-- Property 1 -->
+            <div class="property" onclick="showOverlay('property1-info')">
+                <img src="PropertyPics/DowntownLittleRockBNB7Landing.webp" alt="Property 1">
+                <p>Click for details</p>
             </div>
-            <!-- Repeat the above div for each property -->
-            <div class="property" onclick="togglePropertyInfo(this)">
-                <img src="PropertyPics/h2.jpg" alt="Property 2">
-                <div class="property-info">
-                    <h2>Property 2</h2>
-                    <p>Location: Property 2 Location</p>
-                    <p>Price: $Y</p>
-                    <p>More information about Property 2.</p>
-                    <a href="Properties/property2.html">See More</a>
-                </div>
+            <!-- Property 2 -->
+            <div class="property" onclick="showOverlay('property2-info')">
+                <img src="PropertyPics/DowntownLittleRockBNB8Landing.webp" alt="Property 2">
+                <p>Click for details</p>
             </div>
-            <div class="property" onclick="togglePropertyInfo(this)">
-                <img src="PropertyPics/RuthHouse1.avif" alt="Property 3">
-                <div class="property-info">
-                    <h2>Property 3</h2>
-                    <p>Location: Property 3 Location</p>
-                    <p>Price: $Z</p>
-                    <p>More information about Property 3.</p>                    
-                    <a href="https://www.vrbo.com/4657269ha">VRBO</a>
-                </div>
+            <!-- Property 3 -->
+            <div class="property" onclick="showOverlay('property3-info')">
+                <img src="PropertyPics/DowntownLittleRockBNB9Landing.webp" alt="Property 3">
+                <p>Click for details</p>
             </div>
         </section>
-      <div class="page-links">
+        <div class="page-links">
             <a href="LittleRockProperties1.html">1</a>
             <a href="LittleRockProperties2.html">2</a>
             <a href="LittleRockProperties3.html">3</a>
         </div>
     </div>
+    <!-- Overlays -->
+    <div id="property1-info" class="overlay" onclick="hideOverlay('property1-info')">
+        <div class="overlay-content">
+            <h2>Property 1</h2>
+            <p>Location: Downtown Little Rock</p>
+            <p>Price: $X</p>
+            <p>More information about Property 1.</p>
+            <a href="Properties/property1.html">See More</a>
+        </div>
+    </div>
+    <div id="property2-info" class="overlay" onclick="hideOverlay('property2-info')">
+        <div class="overlay-content">
+            <h2>Property 2</h2>
+            <p>Location: Downtown Little Rock</p>
+            <p>Price: $Y</p>
+            <p>More information about Property 2.</p>
+            <a href="Properties/property2.html">See More</a>
+        </div>
+    </div>
+    <div id="property3-info" class="overlay" onclick="hideOverlay('property3-info')">
+        <div class="overlay-content">
+            <h2>Property 3</h2>
+            <p>Location: Downtown Little Rock</p>
+            <p>Price: $Z</p>
+            <p>More information about Property 3.</p>
+            <a href="https://www.vrbo.com/4657269ha">VRBO</a>
+        </div>
+    </div>
     <script>
-        function togglePropertyInfo(property) {
-            property.classList.toggle('active');
-            adjustFooterMargin();
+        function showOverlay(id) {
+            document.getElementById(id).style.display = 'flex';
         }
-
-        function adjustFooterMargin() {
-            var footerHeight = document.getElementById('mainFooter').offsetHeight;
-            document.getElementById('mainHeader').style.marginBottom = footerHeight + 'px';
+        function hideOverlay(id) {
+            document.getElementById(id).style.display = 'none';
         }
+        // Close overlay when clicking outside of it
+        window.onclick = function(event) {
+            if (event.target.classList.contains('overlay')) {
+                event.target.style.display = 'none';
+            }
+        };
     </script>
 </body>
 </html>
