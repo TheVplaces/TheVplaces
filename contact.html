@@ -28,9 +28,41 @@
             font-size: 16px;
             line-height: 1.6;
         }
+        header {
+            height: 50px;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            left: 0;
+            z-index: 1000;
+        }
+        .header-buttons {
+            display: flex;
+        }
+        .header-buttons a {
+            margin-right: 20px;
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .header-buttons a:hover {
+            color: #ddd;
+        }
     </style>
 </head>
 <body>
+    <header id="mainHeader">
+        <div class="header-buttons">
+            <a href="index.html">Home</a>
+            <a href="SocialsEvents.html">Properties</a>
+            <a href="AboutUs.html">About Us</a>
+        </div>
+    </header>
     <div class="container">
         <h2>Contact Us</h2>
         <p>If you have any inquiries or need assistance, please feel free to contact us using the information below:</p>
