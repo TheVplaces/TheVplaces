@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Property 2 Details</title>
+    <title>Property 1 Details</title>
     <style>
         /* Add your CSS styles here */
         body {
@@ -86,11 +86,45 @@
             background-color: #eee;
             border-color: #bbb;
         }
+		 header {
+            height: 50px;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0; /* Fix header to the top */
+            left: 0;
+            z-index: 1000;
+        }
+        .header-buttons {
+            display: flex;
+        }
+        .header-buttons a {
+            margin-right: 20px;
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .header-buttons a:hover {
+            color: #ddd;
+        }
+        /* Add space below header to avoid content overlap */
+        body > .container {
+            margin-top: 50px;
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Property 2 Details</h1>
+<header id="mainHeader">
+        <div class="header-buttons">
+            <a href="index.html">Home</a>
+            <a href="LittleRockProperties1.html">Properties</a>
+            <a href="AboutUs.html">About Us</a>
+        </div>
     </header>
     <div class="container">
         <nav>
