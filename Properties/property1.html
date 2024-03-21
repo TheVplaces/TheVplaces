@@ -68,6 +68,24 @@
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+        .booking-buttons {
+            margin-top: 20px;
+        }
+        .booking-buttons a {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #222;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+        .booking-buttons a:hover {
+            background-color: #eee;
+            border-color: #bbb;
+        }
     </style>
 </head>
 <body>
@@ -79,7 +97,7 @@
             <a href="events.html">Book Directly For Events</a>
             <a href="contact.html">Contact Us</a>
             <a href="about.html">About Us</a>
-			<a href="Landing.html">Back To Homepage</a>
+            <a href="Landing.html">Back To Homepage</a>
         </nav>
         <section>
             <img src="h2.jpg" alt="Property 2" class="property-img">
@@ -102,7 +120,12 @@
                 <div class="category">
                     <h2>Booking</h2>
                     <p>Book this property now!</p>
-                    <a href="calendly-link">Book Now</a>
+                    <div class="booking-buttons">
+                        <a href="https://www.airbnb.com/rooms/859616286105603942?guests=1&adults=1&s=67&unique_share_id=64e34d22-7525-42d8-bc82-a5c4a87d84e1&source_impression_id=p3_1710787831_YrGcNJ%2BVqCdMiJur
+" id="airbnb-link">AIRBNB</a>
+                        <a href="https://www.vrbo.com/3329870?rm1=a2&expediaPropertyId=92434826&referrerId=HOT.HIS.Share.Landed.Copy_Link
+" id="vrbo-link">VRBO</a>
+                    </div>
                 </div>
             </div>
         </section>
