@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Property 1 Details</title>
+    <title>Family and pet friendly home!</title>
     <style>
-        /* Add your CSS styles here */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -19,74 +18,6 @@
             padding: 20px;
         }
         header {
-            background-color: #222;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-        }
-        nav {
-            text-align: center;
-            margin-top: 20px;
-        }
-        nav a {
-            display: inline-block;
-            margin: 0 10px;
-            color: #222;
-            text-decoration: none;
-            padding: 10px 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            transition: background-color 0.2s ease;
-        }
-        nav a:hover {
-            background-color: #ddd;
-        }
-        section {
-            margin-top: 50px;
-        }
-        .property-img {
-            max-width: 100%;
-            display: block;
-            margin: 0 auto;
-            border-radius: 5px;
-        }
-        .description {
-            margin-top: 20px;
-            text-align: center;
-        }
-        .categories {
-            display: flex;
-            justify-content: center;
-            margin-top: 50px;
-        }
-        .category {
-            flex: 1;
-            text-align: center;
-            margin: 0 10px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .booking-buttons {
-            margin-top: 20px;
-        }
-        .booking-buttons a {
-            display: inline-block;
-            margin: 0 10px;
-            padding: 10px 20px;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            text-decoration: none;
-            color: #222;
-            transition: background-color 0.2s, border-color 0.2s;
-        }
-        .booking-buttons a:hover {
-            background-color: #eee;
-            border-color: #bbb;
-        }
-		 header {
             height: 50px;
             width: 100%;
             background-color: #333;
@@ -96,7 +27,7 @@
             justify-content: space-between;
             align-items: center;
             position: fixed;
-            top: 0; /* Fix header to the top */
+            top: 0;
             left: 0;
             z-index: 1000;
         }
@@ -112,54 +43,137 @@
         .header-buttons a:hover {
             color: #ddd;
         }
-        /* Add space below header to avoid content overlap */
-        body > .container {
+        nav a, .booking-buttons a {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #fff;
+            border: 1px solid #ccc; /* Retaining the button outlines */
+            border-radius: 5px;
+            text-decoration: none;
+            color: #222;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+        nav a:hover, .booking-buttons a:hover {
+            background-color: #eee;
+            border-color: #bbb;
+        }
+        .property-img {
+            max-width: 100%;
+            display: block;
+            margin: 0 auto;
+            border-radius: 5px;
+        }
+        .description {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
             margin-top: 50px;
         }
+        .category {
+            width: 45%;
+            text-align: center;
+            margin: 5px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        @media (max-width: 600px) {
+            .category {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+        body > .container {
+            margin-top: 60px; /* Add space below header to avoid content overlap */
+        }
     </style>
+    <script>
+        function calculateDistance(lat1, lon1, lat2, lon2) {
+            var R = 3959; // Earth's radius in miles
+            var dLat = degreesToRadians(lat2-lat1);
+            var dLon = degreesToRadians(lon2-lon1);
+            var a = 
+                Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(degreesToRadians(lat1)) * Math.cos(degreesToRadians(lat2)) * 
+                Math.sin(dLon/2) * Math.sin(dLon/2);
+            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+            var distance = R * c;
+            return distance;
+        }
+
+        function degreesToRadians(degrees) {
+            return degrees * (Math.PI/180);
+        }
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showDistance);
+            } else {
+                document.getElementById("distanceInfo").innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showDistance(position) {
+            var lat2 = 34.7465; // Latitude of 111 S Battery St, Little Rock, Arkansas 72205
+            var lon2 = -92.2896; // Longitude
+            var lat1 = position.coords.latitude;
+            var lon1 = position.coords.longitude;
+
+            var distance = calculateDistance(lat1, lon1, lat2, lon2);
+            document.getElementById("distanceInfo").innerHTML = "Distance from your location: " + distance.toFixed(2) + " miles";
+        }
+
+        window.onload = getLocation;
+    </script>
 </head>
 <body>
 <header id="mainHeader">
-        <div class="header-buttons">
-            <a href="index.html">Home</a>
-            <a href="LittleRockProperties1.html">Properties</a>
-            <a href="AboutUs.html">About Us</a>
-			<a href="contact.html">Contact Us</a>
-        </div>
-    </header>
-    <div class="container">
-        <nav>
-        </nav>
-        <section>
-            <img src="h2.jpg" alt="Property 2" class="property-img">
-            <div class="description">
-                <p>Brief description of Property 2.</p>
-            </div>
-            <div class="categories">
-                <div class="category">
-                    <h2>Near This Location</h2>
-                    <p>Place 1</p>
-                    <p>Place 2</p>
-                    <p>Place 3</p>
-                </div>
-                <div class="category">
-                    <h2>Amenities</h2>
-                    <p>Amenity 1</p>
-                    <p>Amenity 2</p>
-                    <p>Amenity 3</p>
-                </div>
-                <div class="category">
-                    <h2>Booking</h2>
-                    <p>Book this property now!</p>
-                    <div class="booking-buttons">
-                        <a href="https://www.airbnb.com/rooms/859616286105603942?guests=1&adults=1&s=67&unique_share_id=64e34d22-7525-42d8-bc82-a5c4a87d84e1&source_impression_id=p3_1710787831_YrGcNJ%2BVqCdMiJur
-" id="airbnb-link">AIRBNB</a>
-                        <a href="https://www.vrbo.com/3329870?rm1=a2&expediaPropertyId=92434826&referrerId=HOT.HIS.Share.Landed.Copy_Link
-" id="vrbo-link">VRBO</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <div class="header-buttons">
+        <a href="index.html">Home</a>
+        <a href="LittleRockProperties1.html">Properties</a>
+        <a href="AboutUs.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
     </div>
+</header>
+<div class="container">
+    <section>
+        <img src="h2.jpg" alt="LittleRockArkansasBNB1" class="property-img">
+        <div class="description">
+            <p>Family and pet friendly home!</p>
+        </div>
+        <div class="categories">
+            <div class="category">
+                <h2>Near This Location</h2>
+                <p>Baseball (insert link)</p>
+                <p>Resteraunts (insert links)</p>
+                <p>Museams (insert link)</p>
+            </div>
+            <div class="category">
+                <h2>Amenities</h2>
+                <p>Wi-Fi</p>
+                <p>Netflix</p>
+                <p>2 Bedrooms</p>
+            </div>
+            <div class="category">
+                <h2>Booking</h2>
+                <p>Book this property now!</p>
+                <div class="booking-buttons">
+                    <a href="https://www.airbnb.com/rooms/859616286105603942?guests=1&adults=1&s=67&unique_share_id=64e34d22-7525-42d8-bc82-a5c4a87d84e1&source_impression_id=p3_1710787831_YrGcNJ%2BVqCdMiJur" id="airbnb-link">AIRBNB</a>
+                    <a href="https://www.vrbo.com/3329870?rm1=a2&expediaPropertyId=92434826&referrerId=HOT.HIS.Share.Landed.Copy_Link">VRBO</a>
+                </div>
+            </div>
+            <div class="category">
+                <h2>Distance From Your Location</h2>
+                <p id="distanceInfo">Calculating...</p>
+            </div>
+        </div>
+    </section>
+</div>
 </body>
 </html>
