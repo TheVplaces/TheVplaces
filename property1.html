@@ -48,7 +48,7 @@
             margin: 0 10px;
             padding: 10px 20px;
             background-color: #fff;
-            border: 1px solid #ccc; /* Retaining the button outlines */
+            border: 1px solid #ccc;
             border-radius: 5px;
             text-decoration: none;
             color: #222;
@@ -60,8 +60,8 @@
         }
         .image-slider {
             position: relative;
-            max-width: 600px; /* Adjust based on desired width */
-            margin: 20px auto; /* Center slider */
+            max-width: 600px;
+            margin: 20px auto;
         }
         .image-container {
             display: flex;
@@ -69,7 +69,7 @@
         }
         .slide-image {
             max-width: 100%;
-            display: none; /* Hide all images initially */
+            display: none;
             transition: 0.5s ease;
         }
         .prev-arrow, .next-arrow {
@@ -113,9 +113,17 @@
                 width: 100%;
                 margin: 10px 0;
             }
+            /* Responsive Image Slider adjustments for mobile devices */
+            .image-slider {
+                max-width: 100%;
+            }
+            .slide-image {
+                height: auto; /* Maintain aspect ratio */
+                max-height: 250px; /* Reduce height on smaller screens */
+            }
         }
         body > .container {
-            margin-top: 60px; /* Add space below header to avoid content overlap */
+            margin-top: 60px;
         }
     </style>
 </head>
@@ -136,9 +144,9 @@
             <div class="image-container">
                 <!-- Repeat the image tag for 5 total images -->
                 <img src="PropertyPics/DowntownLittleRockBNB1Landing.webp" alt="Slide 1" class="slide-image">
-                <img src="PropertyPics/DowntownLittleRockBNB2Landing.webp" alt="Slide 2" class="slide-image">
+                <img src="PropertyPics/DowntownLittleRockBNB1Landing.webp" alt="Slide 2" class="slide-image">
                 <img src="PropertyPics/DowntownLittleRockBNB1Landing.webp" alt="Slide 3" class="slide-image">
-                <img src="PropertyPics/DowntownLittleRockBNB2Landing.webp" alt="Slide 4" class="slide-image">
+                <img src="PropertyPics/DowntownLittleRockBNB1Landing.webp" alt="Slide 4" class="slide-image">
                 <img src="PropertyPics/DowntownLittleRockBNB1Landing.webp" alt="Slide 5" class="slide-image">
             </div>
             <button class="slide-arrow next-arrow">&#10095;</button>
