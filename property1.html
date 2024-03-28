@@ -58,11 +58,36 @@
             background-color: #eee;
             border-color: #bbb;
         }
-        .property-img {
+        .image-slider {
+            position: relative;
+            max-width: 600px; /* Adjust based on desired width */
+            margin: 20px auto; /* Center slider */
+        }
+        .image-container {
+            display: flex;
+            overflow: hidden;
+        }
+        .slide-image {
             max-width: 100%;
-            display: block;
-            margin: 0 auto;
-            border-radius: 5px;
+            display: none; /* Hide all images initially */
+            transition: 0.5s ease;
+        }
+        .prev-arrow, .next-arrow {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+        }
+        .next-arrow {
+            right: 0;
+        }
+        .prev-arrow {
+            left: 0;
         }
         .description {
             text-align: center;
@@ -93,44 +118,6 @@
             margin-top: 60px; /* Add space below header to avoid content overlap */
         }
     </style>
-    <script>
-        function calculateDistance(lat1, lon1, lat2, lon2) {
-            var R = 3959; // Earth's radius in miles
-            var dLat = degreesToRadians(lat2-lat1);
-            var dLon = degreesToRadians(lon2-lon1);
-            var a = 
-                Math.sin(dLat/2) * Math.sin(dLat/2) +
-                Math.cos(degreesToRadians(lat1)) * Math.cos(degreesToRadians(lat2)) * 
-                Math.sin(dLon/2) * Math.sin(dLon/2);
-            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-            var distance = R * c;
-            return distance;
-        }
-
-        function degreesToRadians(degrees) {
-            return degrees * (Math.PI/180);
-        }
-
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showDistance);
-            } else {
-                document.getElementById("distanceInfo").innerHTML = "Geolocation is not supported by this browser.";
-            }
-        }
-
-        function showDistance(position) {
-            var lat2 = 34.7465; // Latitude of 111 S Battery St, Little Rock, Arkansas 72205
-            var lon2 = -92.2896; // Longitude
-            var lat1 = position.coords.latitude;
-            var lon1 = position.coords.longitude;
-
-            var distance = calculateDistance(lat1, lon1, lat2, lon2);
-            document.getElementById("distanceInfo").innerHTML = "Distance from your location: About " + distance.toFixed(0) + " miles";
-        }
-
-        window.onload = getLocation;
-    </script>
 </head>
 <body>
 <header id="mainHeader">
@@ -143,7 +130,20 @@
 </header>
 <div class="container">
     <section>
-        <img src="PropertyPics/DowntownLittleRockBNB1Landing.webp" alt="LittleRockArkansasBNB1" class="property-img">
+        <!-- Image slider section -->
+        <div class="image-slider">
+            <button class="slide-arrow prev-arrow">&#10094;</button>
+            <div class="image-container">
+                <!-- Repeat the image tag for 5 total images -->
+                <img src="PropertyPics/DowntownLittleRockBNB1Landing.webp" alt="Slide 1" class="slide-image">
+                <img src="PropertyPics/DowntownLittleRockBNB1Landing.webp" alt="Slide 2" class="slide-image">
+                <img src="PropertyPics/DowntownLittleRockBNB1Landing.webp" alt="Slide 3" class="slide-image">
+                <img src="PropertyPics/DowntownLittleRockBNB1Landing.webp" alt="Slide 4" class="slide-image">
+                <img src="PropertyPics/DowntownLittleRockBNB1Landing.webp" alt="Slide 5" class="slide-image">
+            </div>
+            <button class="slide-arrow next-arrow">&#10095;</button>
+        </div>
+        <!-- Original content -->
         <div class="description">
             <p>Family and pet friendly home!</p>
         </div>
@@ -175,5 +175,73 @@
         </div>
     </section>
 </div>
+<script>
+    // Original distance calculation script
+    function calculateDistance(lat1, lon1, lat2, lon2) {
+        var R = 3959; // Earth's radius in miles
+        var dLat = degreesToRadians(lat2-lat1);
+        var dLon = degreesToRadians(lon2-lon1);
+        var a = 
+            Math.sin(dLat/2) * Math.sin(dLat/2) +
+            Math.cos(degreesToRadians(lat1)) * Math.cos(degreesToRadians(lat2)) * 
+            Math.sin(dLon/2) * Math.sin(dLon/2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+        var distance = R * c;
+        return distance;
+    }
+
+    function degreesToRadians(degrees) {
+        return degrees * (Math.PI/180);
+    }
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showDistance);
+        } else {
+            document.getElementById("distanceInfo").innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    function showDistance(position) {
+        var lat2 = 34.7465; // Latitude of 111 S Battery St, Little Rock, Arkansas 72205
+        var lon2 = -92.2896; // Longitude
+        var lat1 = position.coords.latitude;
+        var lon1 = position.coords.longitude;
+
+        var distance = calculateDistance(lat1, lon1, lat2, lon2);
+        document.getElementById("distanceInfo").innerHTML = "Distance from your location: About " + distance.toFixed(0) + " miles";
+    }
+
+    window.onload = function() {
+        getLocation();
+        showSlides(slideIndex);
+    };
+
+    // Image slider script
+    let slideIndex = 1;
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("slide-image");
+      if (n > slides.length) {slideIndex = 1}    
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";  
+      }
+      slides[slideIndex-1].style.display = "block";  
+    }
+
+    document.querySelector('.prev-arrow').addEventListener('click', function() {
+        plusSlides(-1);
+    });
+
+    document.querySelector('.next-arrow').addEventListener('click', function() {
+        plusSlides(1);
+    });
+</script>
 </body>
 </html>
