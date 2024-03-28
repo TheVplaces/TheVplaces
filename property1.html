@@ -126,7 +126,7 @@
             var lon1 = position.coords.longitude;
 
             var distance = calculateDistance(lat1, lon1, lat2, lon2);
-            document.getElementById("distanceInfo").innerHTML = "Distance from your location: " + distance.toFixed(2) + " miles";
+            document.getElementById("distanceInfo").innerHTML = "Distance from your location: " + distance.toFixed(0) + " miles";
         }
 
         window.onload = getLocation;
@@ -143,7 +143,7 @@
 </header>
 <div class="container">
     <section>
-        <img src="h2.jpg" alt="LittleRockArkansasBNB1" class="property-img">
+        <img src="PropertyPics/DowntownLittleRockBNB1Landing.webp" alt="LittleRockArkansasBNB1" class="property-img">
         <div class="description">
             <p>Family and pet friendly home!</p>
         </div>
