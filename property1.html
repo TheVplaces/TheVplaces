@@ -126,7 +126,7 @@
             var lon1 = position.coords.longitude;
 
             var distance = calculateDistance(lat1, lon1, lat2, lon2);
-            document.getElementById("distanceInfo").innerHTML = "Distance from your location: " + distance.toFixed(0) + " miles";
+            document.getElementById("distanceInfo").innerHTML = "Distance from your location: About " + distance.toFixed(0) + " miles";
         }
 
         window.onload = getLocation;
