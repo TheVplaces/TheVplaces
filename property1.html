@@ -89,6 +89,19 @@
         .prev-arrow {
             left: 0;
         }
+        @media (max-width: 600px) {
+            .slide-image {
+                height: auto; /* Maintain aspect ratio */
+                max-height: 250px; /* Reduce height on smaller screens */
+            }
+        }
+        /* Desktop specific adjustments */
+        @media (min-width: 601px) {
+            .slide-image {
+                width: 50%; /* Drastically reduce size for desktop */
+                margin: auto; /* Center the image */
+            }
+        }
         .description {
             text-align: center;
             margin-top: 20px;
@@ -113,14 +126,6 @@
                 width: 100%;
                 margin: 10px 0;
             }
-            /* Responsive Image Slider adjustments for mobile devices */
-            .image-slider {
-                max-width: 100%;
-            }
-            .slide-image {
-                height: auto; /* Maintain aspect ratio */
-                max-height: 250px; /* Reduce height on smaller screens */
-            }
         }
         body > .container {
             margin-top: 60px;
@@ -138,11 +143,9 @@
 </header>
 <div class="container">
     <section>
-        <!-- Image slider section -->
         <div class="image-slider">
             <button class="slide-arrow prev-arrow">&#10094;</button>
             <div class="image-container">
-                <!-- Repeat the image tag for 5 total images -->
                 <img src="PropertyPics/DowntownLittleRockBNB1Landing.webp" alt="Slide 1" class="slide-image">
                 <img src="PropertyPics/DowntownLittleRockBNB2Landing.webp" alt="Slide 2" class="slide-image">
                 <img src="PropertyPics/DowntownLittleRockBNB3Landing.webp" alt="Slide 3" class="slide-image">
@@ -151,8 +154,7 @@
             </div>
             <button class="slide-arrow next-arrow">&#10095;</button>
         </div>
-        <!-- Original content -->
-        <div class="description">
+<div class="description">
             <p>Family and pet friendly home!</p>
         </div>
         <div class="categories">
@@ -184,24 +186,40 @@
     </section>
 </div>
 <script>
-    // Original distance calculation script
+    // Swipe functionality
+    let touchstartX = 0;
+    let touchendX = 0;
+    
+    const slider = document.querySelector('.image-slider');
+    
+    function handleSwipe() {
+        if (touchendX < touchstartX) plusSlides(1);
+        if (touchendX > touchstartX) plusSlides(-1);
+    }
+    
+    slider.addEventListener('touchstart', e => {
+        touchstartX = e.changedTouches[0].screenX;
+    });
+    
+    slider.addEventListener('touchend', e => {
+        touchendX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+    
+    // Existing functions for slider and distance calculation
     function calculateDistance(lat1, lon1, lat2, lon2) {
-        var R = 3959; // Earth's radius in miles
+        var R = 3959; // miles
         var dLat = degreesToRadians(lat2-lat1);
         var dLon = degreesToRadians(lon2-lon1);
-        var a = 
-            Math.sin(dLat/2) * Math.sin(dLat/2) +
-            Math.cos(degreesToRadians(lat1)) * Math.cos(degreesToRadians(lat2)) * 
-            Math.sin(dLon/2) * Math.sin(dLon/2);
+        var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(degreesToRadians(lat1)) * Math.cos(degreesToRadians(lat2)) * Math.sin(dLon/2) * Math.sin(dLon/2);
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-        var distance = R * c;
-        return distance;
+        return R * c;
     }
-
+    
     function degreesToRadians(degrees) {
-        return degrees * (Math.PI/180);
+        return degrees * (Math.PI / 180);
     }
-
+    
     function getLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showDistance);
@@ -209,47 +227,33 @@
             document.getElementById("distanceInfo").innerHTML = "Geolocation is not supported by this browser.";
         }
     }
-
+    
     function showDistance(position) {
-        var lat2 = 34.7465; // Latitude of 111 S Battery St, Little Rock, Arkansas 72205
-        var lon2 = -92.2896; // Longitude
-        var lat1 = position.coords.latitude;
-        var lon1 = position.coords.longitude;
-
-        var distance = calculateDistance(lat1, lon1, lat2, lon2);
+        var distance = calculateDistance(position.coords.latitude, position.coords.longitude, 34.7465, -92.2896);
         document.getElementById("distanceInfo").innerHTML = "Distance from your location: About " + distance.toFixed(0) + " miles";
     }
-
-    window.onload = function() {
-        getLocation();
-        showSlides(slideIndex);
-    };
-
-    // Image slider script
+    
     let slideIndex = 1;
-
+    showSlides(slideIndex);
+    
     function plusSlides(n) {
       showSlides(slideIndex += n);
     }
-
+    
     function showSlides(n) {
-      let i;
       let slides = document.getElementsByClassName("slide-image");
-      if (n > slides.length) {slideIndex = 1}    
-      if (n < 1) {slideIndex = slides.length}
-      for (i = 0; i < slides.length; i++) {
+      if (n > slides.length) slideIndex = 1;
+      if (n < 1) slideIndex = slides.length;
+      for (let i = 0; i < slides.length; i++) {
           slides[i].style.display = "none";  
       }
       slides[slideIndex-1].style.display = "block";  
     }
-
-    document.querySelector('.prev-arrow').addEventListener('click', function() {
-        plusSlides(-1);
-    });
-
-    document.querySelector('.next-arrow').addEventListener('click', function() {
-        plusSlides(1);
-    });
+    
+    document.querySelector('.prev-arrow').addEventListener('click', () => plusSlides(-1));
+    document.querySelector('.next-arrow').addEventListener('click', () => plusSlides(1));
+    
+    window.onload = getLocation;
 </script>
 </body>
 </html>
