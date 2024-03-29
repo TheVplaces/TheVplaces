@@ -31,9 +31,6 @@
             left: 0;
             z-index: 1000;
         }
-        .header-buttons {
-            display: flex;
-        }
         .header-buttons a {
             margin-right: 20px;
             color: #fff;
@@ -154,10 +151,11 @@
             </div>
             <button class="slide-arrow next-arrow">&#10095;</button>
         </div>
-<div class="description">
+        <div class="description">
             <p>Family and pet friendly home!</p>
+            <p id="distanceDisplay">Calculating distance...</p> <!-- Adjusted for distance display -->
         </div>
-        <div class="categories">
+<div class="categories">
             <div class="category">
                 <h2>Near This Location</h2>
                 <p>Baseball (insert link)</p>
@@ -178,15 +176,10 @@
                     <a href="https://www.vrbo.com/3329870?rm1=a2&expediaPropertyId=92434826&referrerId=HOT.HIS.Share.Landed.Copy_Link">VRBO</a>
                 </div>
             </div>
-            <div class="category">
-                <h2>Distance From Your Location</h2>
-                <p id="distanceInfo">Calculating...</p>
-            </div>
-        </div>
     </section>
 </div>
 <script>
-    // Swipe functionality
+      // Swipe functionality
     let touchstartX = 0;
     let touchendX = 0;
     
@@ -224,16 +217,16 @@
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showDistance);
         } else {
-            document.getElementById("distanceInfo").innerHTML = "Geolocation is not supported by this browser.";
+            document.getElementById("distanceDisplay").innerHTML = "Geolocation is not supported by this browser.";
         }
     }
     
     function showDistance(position) {
         var distance = calculateDistance(position.coords.latitude, position.coords.longitude, 34.7465, -92.2896);
-        document.getElementById("distanceInfo").innerHTML = "Distance from your location: About " + distance.toFixed(0) + " miles";
+        document.getElementById("distanceDisplay").innerHTML = "Distance from your location: About " + distance.toFixed(0) + " miles";
     }
-    
-    let slideIndex = 1;
+
+     let slideIndex = 1;
     showSlides(slideIndex);
     
     function plusSlides(n) {
@@ -252,7 +245,6 @@
     
     document.querySelector('.prev-arrow').addEventListener('click', () => plusSlides(-1));
     document.querySelector('.next-arrow').addEventListener('click', () => plusSlides(1));
-    
     window.onload = getLocation;
 </script>
 </body>
