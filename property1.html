@@ -55,20 +55,35 @@
             background-color: #eee;
             border-color: #bbb;
         }
-        .image-slider {
-            position: relative;
+               .image-slider {
+            overflow: hidden;
             max-width: 600px;
             margin: 20px auto;
         }
+        
         .image-container {
             display: flex;
-            overflow: hidden;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
         }
+        
         .slide-image {
             max-width: 100%;
-            display: none;
-            transition: 0.5s ease;
+            flex: 0 0 auto; /* Do not grow, do not shrink, basis auto */
+            transition: transform 0.5s ease;
         }
+        
+        /* Hide scrollbar for cleaner look */
+        .image-container::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .image-container {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
         .prev-arrow, .next-arrow {
             cursor: pointer;
             position: absolute;
@@ -185,10 +200,6 @@
     
     const slider = document.querySelector('.image-slider');
     
-    function handleSwipe() {
-        if (touchendX < touchstartX) plusSlides(1);
-        if (touchendX > touchstartX) plusSlides(-1);
-    }
     
     slider.addEventListener('touchstart', e => {
         touchstartX = e.changedTouches[0].screenX;
