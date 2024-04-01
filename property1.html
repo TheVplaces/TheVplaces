@@ -66,12 +66,15 @@
             scroll-snap-type: x mandatory; /* Enables snap scrolling */
             -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
         }
-        .slide-image {
-            max-width: 100%;
-            flex: 0 0 auto; /* Prevents images from shrinking */
+               .slide-image {
+            width: 90%; /* Adjusted width to size down images */
+            height: auto; /* Maintains aspect ratio */
+            flex: 0 0 auto; /* Ensures that the images do not grow or shrink outside of specified dimensions */
             scroll-snap-align: start; /* Ensures each image snaps in place */
-            transition: transform 0.5s ease; /* Smooth transition for images */
+            object-fit: cover; /* Ensures the image covers the area, this might crop images though */
+            margin: 0 auto; /* Centers the image in the container */
         }
+
         /* Hide scrollbar for cleaner look */
         .image-container::-webkit-scrollbar {
             display: none;
