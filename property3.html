@@ -57,10 +57,9 @@
         }
         .image-slider {
             overflow: hidden;
-            width: 70%;
-            max-width: 600px; /* Adjusted max-width for consistency */
+            width: 100%; /* Full width for smoother mobile scrolling */
+            max-width: 600px; /* Limiting size on larger screens */
             margin: 20px auto;
-            position: relative;
         }
         .image-container {
             display: flex;
@@ -74,48 +73,21 @@
             flex: 0 0 100%;
             scroll-snap-align: start;
             object-fit: cover;
-            display: block; /* Ensure images are displayed */
         }
-        .image-container::-webkit-scrollbar, .prev-arrow, .next-arrow {
-            display: none; /* Hide scrollbar and arrows initially */
+        .image-container::-webkit-scrollbar {
+            display: none; /* Hide scrollbar for all browsers */
         }
-        @media (max-width: 600px) {
-            .slide-image {
-                flex: 0 0 auto; /* Adjust this to control image width on mobile */
-            }
-            .prev-arrow, .next-arrow {
-                display: none;
-            }
+        .image-container {
+            -ms-overflow-style: none; /* Internet Explorer 10+ */
+            scrollbar-width: none; /* Firefox */
         }
-        @media (min-width: 601px) {
-            .slide-image {
-                display: none; /* Managed by JavaScript */
-            }
-            .prev-arrow, .next-arrow {
-                display: block; /* Show arrows */
-                cursor: pointer;
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                padding: 16px;
-                color: white;
-                font-weight: bold;
-                background-color: rgba(0, 0, 0, 0.5);
-                border: none;
-            }
-            .next-arrow {
-                right: 0;
-            }
-            .prev-arrow {
-                left: 0;
-            }
-            .image-container {
-                overflow: hidden;
-            }
-        }
-        .description {
+        .description, .title {
             text-align: center;
             margin-top: 20px;
+        }
+        .title {
+            font-weight: bold;
+            font-size: 24px; 
         }
         .categories {
             display: flex;
@@ -138,8 +110,34 @@
                 margin: 10px 0;
             }
         }
+        @media (min-width: 601px) {
+            .prev-arrow, .next-arrow {
+                display: block; /* Only show arrows on desktop */
+                cursor: pointer;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                padding: 16px;
+                color: white;
+                font-weight: bold;
+                background-color: rgba(0, 0, 0, 0.5);
+                border: none;
+            }
+            .next-arrow {
+                right: 0;
+            }
+            .prev-arrow {
+                left: 0;
+            }
+            .slide-image {
+                display: none; /* Hide for manual control */
+            }
+            .image-container {
+                overflow: hidden;
+            }
+        }
         body > .container {
-            margin-top: 60px;
+            margin-top: 110px;
         }
     </style>
 </head>
@@ -154,6 +152,7 @@
 </header>
 <div class="container">
     <section>
+        <div class="title">Family and pet friendly home!</div>
         <div class="image-slider">
             <button class="slide-arrow prev-arrow">&#10094;</button>
             <div class="image-container">
@@ -225,52 +224,7 @@
         }
     }
 
-    window.onload = function() {
-        getLocation();
-        showSlides(slideIndex); // Initialize slides
-    };
-
-    // Image slider
-    let slideIndex = 1;
-
-    function plusSlides(n) {
-        showSlides(slideIndex += n);
-    }
-
-    function showSlides(n) {
-        let slides = document.getElementsByClassName("slide-image");
-        if (n > slides.length) {slideIndex = 1}
-        if (n < 1) {slideIndex = slides.length}
-        for (let i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";  
-        }
-        slides[slideIndex-1].style.display = "block";  
-    }
-
-    // Swipe functionality for mobile
-    let touchstartX = 0;
-    let touchendX = 0;
-    
-    const slider = document.querySelector('.image-slider');
-    
-    slider.addEventListener('touchstart', e => {
-        touchstartX = e.changedTouches[0].screenX;
-    });
-
-    slider.addEventListener('touchend', e => {
-        touchendX = e.changedTouches[0].screenX;
-        handleSwipe();
-    });
-
-    function handleSwipe() {
-        if (touchendX < touchstartX) plusSlides(1);
-        if (touchendX > touchstartX) plusSlides(-1);
-    }
-
-    // Event listeners for desktop arrow buttons
-    document.querySelector('.prev-arrow').addEventListener('click', () => plusSlides(-1));
-    document.querySelector('.next-arrow').addEventListener('click', () => plusSlides(1));
+    window.onload = getLocation;
 </script>
-
 </body>
 </html>
