@@ -14,7 +14,7 @@
         }
         .container {
             max-width: 1200px;
-            margin: auto;
+            margin: 0 auto;
             padding: 20px;
         }
         header {
@@ -56,49 +56,37 @@
             border-color: #bbb;
         }
         .image-slider {
+            overflow: hidden;
             width: 70%;
-            max-width: 600px;
-            margin: 60px auto 20px; /* Adjust margin to prevent title overlap and add bottom margin for spacing */
-            position: relative;
+            max-width: 400px;
+            margin: 20px auto;
         }
         .image-container {
             display: flex;
+            overflow-x: auto;
             scroll-snap-type: x mandatory;
-            overflow-x: scroll; /* Allow scrolling */
-            -webkit-overflow-scrolling: touch; /* Smooth scrolling on webkit browsers */
+            -webkit-overflow-scrolling: touch;
         }
         .slide-image {
             width: 100%;
-            flex: 0 0 auto; /* Adjust flex settings for scrollable content */
+            height: auto;
+            flex: 0 0 100%;
             scroll-snap-align: start;
             object-fit: cover;
         }
         .image-container::-webkit-scrollbar {
-            display: none; /* Hide scrollbar */
+            display: none;
         }
-        .dot-container {
-            text-align: center;
-            padding: 10px;
-        }
-        .dot {
-            cursor: pointer;
-            height: 15px;
-            width: 15px;
-            margin: 0 5px;
-            background-color: #bbb;
-            border-radius: 50%;
-            display: inline-block;
-            transition: background-color 0.6s ease;
-        }
-        .active, .dot:hover {
-            background-color: #717171;
+        .image-container {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
         .title {
-            text-align: center;
-            margin-top: 100px; /* Increase margin to accommodate fixed header */
-            font-weight: bold;
-            font-size: 24px;
-        }
+        text-align: center;
+        margin: 20px 0;
+        font-weight: bold;
+        font-size: 24px; 
+            }
         .description {
             text-align: center;
             margin-top: 20px;
@@ -123,12 +111,9 @@
                 width: 100%;
                 margin: 10px 0;
             }
-            .image-slider {
-                width: 100%; /* Use full width for mobile */
-            }
         }
         body > .container {
-            padding-top: 20px; /* Adjust container padding */
+            margin-top: 110px;
         }
     </style>
 </head>
@@ -146,18 +131,11 @@
         <div class="title">Family and pet friendly home!</div>
         <div class="image-slider">
             <div class="image-container">
-                <img src="PropertyPics/DowntownLittleRockBNB1Landing.webp" alt="Slide 1" class="slide-image" style="display:block;">
+                <img src="PropertyPics/DowntownLittleRockBNB1Landing.webp" alt="Slide 1" class="slide-image">
                 <img src="PropertyPics/DowntownLittleRockBNB2Landing.webp" alt="Slide 2" class="slide-image">
                 <img src="PropertyPics/DowntownLittleRockBNB3Landing.webp" alt="Slide 3" class="slide-image">
                 <img src="PropertyPics/DowntownLittleRockBNB4Landing.webp" alt="Slide 4" class="slide-image">
                 <img src="PropertyPics/DowntownLittleRockBNB5Landing.webp" alt="Slide 5" class="slide-image">
-            </div>
-            <div class="dot-container">
-                <span class="dot" onclick="currentSlide(1)"></span>
-                <span class="dot" onclick="currentSlide(2)"></span>
-                <span class="dot" onclick="currentSlide(3)"></span>
-                <span class="dot" onclick="currentSlide(4)"></span>
-                <span class="dot" onclick="currentSlide(5)"></span>
             </div>
         </div>
         <div class="description">
@@ -188,41 +166,38 @@
     </section>
 </div>
 <script>
-    // JavaScript adjusted for initialization and dot navigation
-    let slideIndex = 1;
-    showSlides(slideIndex); // Initialize slides to show the first one
-
-    // Update the slide shown based on dot click or next/prev
-    function currentSlide(n) {
-        showSlides(slideIndex = n);
+    function degreesToRadians(degrees) {
+        return degrees * (Math.PI / 180);
     }
 
-    function showSlides(n) {
-        let i;
-        let slides = document.getElementsByClassName("slide-image");
-        let dots = document.getElementsByClassName("dot");
-
-        if (n > slides.length) { slideIndex = 1 }
-        if (n < 1) { slideIndex = slides.length }
-
-        // Hide all slides
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-
-        // Remove 'active' state from all dots
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-
-        // Show the active slide and dot
-        slides[slideIndex - 1].style.display = "block";
-        dots[slideIndex - 1].className += " active";
+    function calculateDistance(lat1, lon1, lat2, lon2) {
+        var R = 3959; // Radius of the Earth in miles
+        var dLat = degreesToRadians(lat2-lat1);
+        var dLon = degreesToRadians(lon2-lon1);
+        var a = 
+            Math.sin(dLat/2) * Math.sin(dLat/2) +
+            Math.cos(degreesToRadians(lat1)) * Math.cos(degreesToRadians(lat2)) * 
+            Math.sin(dLon/2) * Math.sin(dLon/2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+        return R * c;
     }
 
-    window.onload = function() {
-        showSlides(slideIndex);
-    };
+    function showDistance(position) {
+        var distance = calculateDistance(position.coords.latitude, position.coords.longitude, 34.7465, -92.2896);
+        document.getElementById("distanceDisplay").innerHTML = "Distance from your location: About " + distance.toFixed(0) + " miles";
+    }
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showDistance, function(error) {
+                document.getElementById("distanceDisplay").innerHTML = "Unable to retrieve your location.";
+            });
+        } else {
+            document.getElementById("distanceDisplay").innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    window.onload = getLocation;
 </script>
 </body>
 </html>
