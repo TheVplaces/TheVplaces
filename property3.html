@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chic guest house with EV universal wall connector</title>
+    <title>Family and pet friendly home!</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -56,48 +56,28 @@
             border-color: #bbb;
         }
         .image-slider {
-            position: relative;
-            max-width: 600px;
+            overflow: hidden;
+            width: 70%;
+            max-width: 400px;
             margin: 20px auto;
+            position: relative;
         }
         .image-container {
             display: flex;
-            overflow: hidden;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
         }
         .slide-image {
-            max-width: 100%;
-            display: none;
-            transition: 0.5s ease;
+            width: 100%;
+            height: auto;
+            flex: 0 0 100%;
+            scroll-snap-align: start;
+            object-fit: cover;
+            display: block; /* Ensure images are displayed */
         }
-        .prev-arrow, .next-arrow {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            padding: 16px;
-            color: white;
-            font-weight: bold;
-            background-color: rgba(0, 0, 0, 0.5);
-            border: none;
-        }
-        .next-arrow {
-            right: 0;
-        }
-        .prev-arrow {
-            left: 0;
-        }
-        @media (max-width: 600px) {
-            .slide-image {
-                height: auto; /* Maintain aspect ratio */
-                max-height: 250px; /* Reduce height on smaller screens */
-            }
-        }
-        /* Desktop specific adjustments */
-        @media (min-width: 601px) {
-            .slide-image {
-                width: 50%; /* Drastically reduce size for desktop */
-                margin: auto; /* Center the image */
-            }
+        .image-container::-webkit-scrollbar, .prev-arrow, .next-arrow {
+            display: none; /* Hide scrollbar and arrows initially */
         }
         .description {
             text-align: center;
@@ -107,7 +87,7 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
-            margin-top: 50px;
+            margin-top: 20px;
         }
         .category {
             width: 45%;
@@ -122,6 +102,36 @@
             .category {
                 width: 100%;
                 margin: 10px 0;
+            }
+        }
+        @media (min-width: 601px) {
+            .image-slider {
+                max-width: 600px;
+            }
+            .slide-image {
+                max-width: 100%;
+                display: none; /* Hide for manual control */
+            }
+            .prev-arrow, .next-arrow {
+                display: block; /* Show arrows */
+                cursor: pointer;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                padding: 16px;
+                color: white;
+                font-weight: bold;
+                background-color: rgba(0, 0, 0, 0.5);
+                border: none;
+            }
+            .next-arrow {
+                right: 0;
+            }
+            .prev-arrow {
+                left: 0;
+            }
+            .image-container {
+                overflow: hidden;
             }
         }
         body > .container {
@@ -143,109 +153,117 @@
         <div class="image-slider">
             <button class="slide-arrow prev-arrow">&#10094;</button>
             <div class="image-container">
-                <img src="PropertyPics/DowntownLittleRockBNB1Landing.webp" alt="Slide 1" class="slide-image">
-                <img src="PropertyPics/DowntownLittleRockBNB2Landing.webp" alt="Slide 2" class="slide-image">
-                <img src="PropertyPics/DowntownLittleRockBNB3Landing.webp" alt="Slide 3" class="slide-image">
-                <img src="PropertyPics/DowntownLittleRockBNB4Landing.webp" alt="Slide 4" class="slide-image">
-                <img src="PropertyPics/DowntownLittleRockBNB5Landing.webp" alt="Slide 5" class="slide-image">
+                <!-- Image slides go here -->
             </div>
             <button class="slide-arrow next-arrow">&#10095;</button>
         </div>
         <div class="description">
-            <p>Chic guest house with EV universal wall connector</p>
-            <p id="distanceDisplay">Calculating distance...</p> <!-- Adjusted for distance display -->
+            <p>Charm & Style in Downtown Little Rock</p>
+            <p id="distanceDisplay">Calculating distance...</p>
         </div>
-<div class="categories">
-            <div class="category">
-                <h2>Near This Location</h2>
-                <p>Baseball (insert link)</p>
-                <p>Resteraunts (insert links)</p>
-                <p>Museams (insert link)</p>
-            </div>
-            <div class="category">
-                <h2>Amenities</h2>
-                <p>Wi-Fi</p>
-                <p>Netflix</p>
-                <p>2 Bedrooms</p>
-            </div>
-            <div class="category">
-                <h2>Booking</h2>
-                <p>Book this property now!</p>
-                <div class="booking-buttons">
-                    <a href="https://www.airbnb.com/rooms/29369048?guests=1&adults=1&s=67&unique_share_id=b2553544-4931-4fc8-ada2-576b46fff0e3&source_impression_id=p3_1710787835_tsJQneFoHfHp1FBb" id="airbnb-link">AIRBNB</a>
-                    <a href="https://www.vrbo.com/1418910?rm1=a2&expediaPropertyId=31052285&referrerId=HOT.HIS.Share.Landed.Copy_Link">VRBO</a>
-                </div>
-            </div>
+        <div class="categories">
+    <div class="category">
+        <h2>Near This Location</h2>
+        <p>Baseball fields nearby</p>
+        <p>Local restaurants within walking distance</p>
+        <p>Museums for family outings</p>
+    </div>
+    <div class="category">
+        <h2>Amenities</h2>
+        <p>High-speed Wi-Fi</p>
+        <p>Netflix subscription included</p>
+        <p>2 cozy bedrooms</p>
+    </div>
+    <div class="category">
+        <h2>Booking</h2>
+        <p>Reserve your stay now!</p>
+        <div class="booking-buttons">
+            <a href="https://www.airbnb.com/rooms/859616286105603942?guests=1&adults=1&s=67&unique_share_id=64e34d22-7525-42d8-bc82-a5c4a87d84e1&source_impression_id=p3_1710787831_YrGcNJ%2BVqCdMiJur">AIRBNB</a>
+            <a href="https://www.vrbo.com/3329870?rm1=a2&expediaPropertyId=92434826&referrerId=HOT.HIS.Share.Landed.Copy_Link">VRBO</a>
+        </div>
+    </div>
+</div>
+
     </section>
 </div>
 <script>
-      // Swipe functionality
-    let touchstartX = 0;
-    let touchendX = 0;
-    
-    const slider = document.querySelector('.image-slider');
-    
-    function handleSwipe() {
-        if (touchendX < touchstartX) plusSlides(1);
-        if (touchendX > touchstartX) plusSlides(-1);
-    }
-    
-    slider.addEventListener('touchstart', e => {
-        touchstartX = e.changedTouches[0].screenX;
-    });
-    
-    slider.addEventListener('touchend', e => {
-        touchendX = e.changedTouches[0].screenX;
-        handleSwipe();
-    });
-    
-    // Existing functions for slider and distance calculation
-    function calculateDistance(lat1, lon1, lat2, lon2) {
-        var R = 3959; // miles
-        var dLat = degreesToRadians(lat2-lat1);
-        var dLon = degreesToRadians(lon2-lon1);
-        var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(degreesToRadians(lat1)) * Math.cos(degreesToRadians(lat2)) * Math.sin(dLon/2) * Math.sin(dLon/2);
-        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-        return R * c;
-    }
-    
     function degreesToRadians(degrees) {
         return degrees * (Math.PI / 180);
     }
-    
-    function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showDistance);
-        } else {
-            document.getElementById("distanceDisplay").innerHTML = "Geolocation is not supported by this browser.";
-        }
+
+    function calculateDistance(lat1, lon1, lat2, lon2) {
+        var R = 3959; // Radius of the Earth in miles
+        var dLat = degreesToRadians(lat2-lat1);
+        var dLon = degreesToRadians(lon2-lon1);
+        var a = 
+            Math.sin(dLat/2) * Math.sin(dLat/2) +
+            Math.cos(degreesToRadians(lat1)) * Math.cos(degreesToRadians(lat2)) * 
+            Math.sin(dLon/2) * Math.sin(dLon/2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+        return R * c;
     }
-    
+
     function showDistance(position) {
         var distance = calculateDistance(position.coords.latitude, position.coords.longitude, 34.7465, -92.2896);
         document.getElementById("distanceDisplay").innerHTML = "Distance from your location: About " + distance.toFixed(0) + " miles";
     }
 
-     let slideIndex = 1;
-    showSlides(slideIndex);
-    
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showDistance, function(error) {
+                document.getElementById("distanceDisplay").innerHTML = "Unable to retrieve your location.";
+            });
+        } else {
+            document.getElementById("distanceDisplay").innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    window.onload = function() {
+        getLocation();
+        showSlides(slideIndex); // Initialize slides
+    };
+
+    // Image slider
+    let slideIndex = 1;
+
     function plusSlides(n) {
-      showSlides(slideIndex += n);
+        showSlides(slideIndex += n);
     }
-    
+
     function showSlides(n) {
-      let slides = document.getElementsByClassName("slide-image");
-      if (n > slides.length) slideIndex = 1;
-      if (n < 1) slideIndex = slides.length;
-      for (let i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";  
-      }
-      slides[slideIndex-1].style.display = "block";  
+        let slides = document.getElementsByClassName("slide-image");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        slides[slideIndex-1].style.display = "block";  
     }
+
+    // Swipe functionality for mobile
+    let touchstartX = 0;
+    let touchendX = 0;
     
+    const slider = document.querySelector('.image-slider');
+    
+    slider.addEventListener('touchstart', e => {
+        touchstartX = e.changedTouches[0].screenX;
+    });
+
+    slider.addEventListener('touchend', e => {
+        touchendX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+
+    function handleSwipe() {
+        if (touchendX < touchstartX) plusSlides(1);
+        if (touchendX > touchstartX) plusSlides(-1);
+    }
+
+    // Event listeners for desktop arrow buttons
     document.querySelector('.prev-arrow').addEventListener('click', () => plusSlides(-1));
     document.querySelector('.next-arrow').addEventListener('click', () => plusSlides(1));
-    window.onload = getLocation;
 </script>
+
 </body>
 </html>
