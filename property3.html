@@ -60,6 +60,7 @@
             width: 100%; /* Full width for smoother mobile scrolling */
             max-width: 600px; /* Limiting size on larger screens */
             margin: 20px auto;
+            position: relative;
         }
         .image-container {
             display: flex;
@@ -70,7 +71,7 @@
         .slide-image {
             width: 100%;
             height: auto;
-            flex: 0 0 100%;
+            flex-shrink: 0; /* Ensure flex items do not shrink */
             scroll-snap-align: start;
             object-fit: cover;
         }
@@ -87,7 +88,7 @@
         }
         .title {
             font-weight: bold;
-            font-size: 24px; 
+            font-size: 24px;
         }
         .categories {
             display: flex;
@@ -129,11 +130,12 @@
             .prev-arrow {
                 left: 0;
             }
-            .slide-image {
-                display: none; /* Hide for manual control */
-            }
             .image-container {
-                overflow: hidden;
+                flex-wrap: nowrap;
+                overflow-x: hidden;
+            }
+            .slide-image {
+                display: block; /* Ensure images are displayed */
             }
         }
         body > .container {
