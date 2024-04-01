@@ -58,7 +58,7 @@
         .image-slider {
             overflow: hidden;
             width: 70%;
-            max-width: 400px;
+            max-width: 600px; /* Adjusted max-width for consistency */
             margin: 20px auto;
             position: relative;
         }
@@ -78,6 +78,40 @@
         }
         .image-container::-webkit-scrollbar, .prev-arrow, .next-arrow {
             display: none; /* Hide scrollbar and arrows initially */
+        }
+        @media (max-width: 600px) {
+            .slide-image {
+                flex: 0 0 auto; /* Adjust this to control image width on mobile */
+            }
+            .prev-arrow, .next-arrow {
+                display: none;
+            }
+        }
+        @media (min-width: 601px) {
+            .slide-image {
+                display: none; /* Managed by JavaScript */
+            }
+            .prev-arrow, .next-arrow {
+                display: block; /* Show arrows */
+                cursor: pointer;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                padding: 16px;
+                color: white;
+                font-weight: bold;
+                background-color: rgba(0, 0, 0, 0.5);
+                border: none;
+            }
+            .next-arrow {
+                right: 0;
+            }
+            .prev-arrow {
+                left: 0;
+            }
+            .image-container {
+                overflow: hidden;
+            }
         }
         .description {
             text-align: center;
@@ -104,36 +138,6 @@
                 margin: 10px 0;
             }
         }
-        @media (min-width: 601px) {
-            .image-slider {
-                max-width: 600px;
-            }
-            .slide-image {
-                max-width: 100%;
-                display: none; /* Hide for manual control */
-            }
-            .prev-arrow, .next-arrow {
-                display: block; /* Show arrows */
-                cursor: pointer;
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                padding: 16px;
-                color: white;
-                font-weight: bold;
-                background-color: rgba(0, 0, 0, 0.5);
-                border: none;
-            }
-            .next-arrow {
-                right: 0;
-            }
-            .prev-arrow {
-                left: 0;
-            }
-            .image-container {
-                overflow: hidden;
-            }
-        }
         body > .container {
             margin-top: 60px;
         }
@@ -153,13 +157,12 @@
         <div class="image-slider">
             <button class="slide-arrow prev-arrow">&#10094;</button>
             <div class="image-container">
-    <img src="PropertyPics/DowntownLittleRockBNB1Landing.webp" alt="Slide 1" class="slide-image">
-    <img src="PropertyPics/DowntownLittleRockBNB2Landing.webp" alt="Slide 2" class="slide-image">
-    <img src="PropertyPics/DowntownLittleRockBNB3Landing.webp" alt="Slide 3" class="slide-image">
-    <img src="PropertyPics/DowntownLittleRockBNB4Landing.webp" alt="Slide 4" class="slide-image">
-    <img src="PropertyPics/DowntownLittleRockBNB5Landing.webp" alt="Slide 5" class="slide-image">
-        </div>
-
+                <img src="PropertyPics/DowntownLittleRockBNB1Landing.webp" alt="Slide 1" class="slide-image">
+                <img src="PropertyPics/DowntownLittleRockBNB2Landing.webp" alt="Slide 2" class="slide-image">
+                <img src="PropertyPics/DowntownLittleRockBNB3Landing.webp" alt="Slide 3" class="slide-image">
+                <img src="PropertyPics/DowntownLittleRockBNB4Landing.webp" alt="Slide 4" class="slide-image">
+                <img src="PropertyPics/DowntownLittleRockBNB5Landing.webp" alt="Slide 5" class="slide-image">
+            </div>
             <button class="slide-arrow next-arrow">&#10095;</button>
         </div>
         <div class="description">
@@ -167,28 +170,27 @@
             <p id="distanceDisplay">Calculating distance...</p>
         </div>
         <div class="categories">
-    <div class="category">
-        <h2>Near This Location</h2>
-        <p>Baseball fields nearby</p>
-        <p>Local restaurants within walking distance</p>
-        <p>Museums for family outings</p>
-    </div>
-    <div class="category">
-        <h2>Amenities</h2>
-        <p>High-speed Wi-Fi</p>
-        <p>Netflix subscription included</p>
-        <p>2 cozy bedrooms</p>
-    </div>
-    <div class="category">
-        <h2>Booking</h2>
-        <p>Reserve your stay now!</p>
-        <div class="booking-buttons">
-            <a href="https://www.airbnb.com/rooms/859616286105603942?guests=1&adults=1&s=67&unique_share_id=64e34d22-7525-42d8-bc82-a5c4a87d84e1&source_impression_id=p3_1710787831_YrGcNJ%2BVqCdMiJur">AIRBNB</a>
-            <a href="https://www.vrbo.com/3329870?rm1=a2&expediaPropertyId=92434826&referrerId=HOT.HIS.Share.Landed.Copy_Link">VRBO</a>
+            <div class="category">
+                <h2>Near This Location</h2>
+                <p>Baseball fields nearby</p>
+                <p>Local restaurants within walking distance</p>
+                <p>Museums for family outings</p>
+            </div>
+            <div class="category">
+                <h2>Amenities</h2>
+                <p>High-speed Wi-Fi</p>
+                <p>Netflix subscription included</p>
+                <p>2 cozy bedrooms</p>
+            </div>
+            <div class="category">
+                <h2>Booking</h2>
+                <p>Reserve your stay now!</p>
+                <div class="booking-buttons">
+                    <a href="https://www.airbnb.com/rooms/859616286105603942?guests=1&adults=1&s=67&unique_share_id=64e34d22-7525-42d8-bc82-a5c4a87d84e1&source_impression_id=p3_1710787831_YrGcNJ%2BVqCdMiJur">AIRBNB</a>
+                    <a href="https://www.vrbo.com/3329870?rm1=a2&expediaPropertyId=92434826&referrerId=HOT.HIS.Share.Landed.Copy_Link">VRBO</a>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-
     </section>
 </div>
 <script>
