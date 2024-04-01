@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta viewport="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Family and pet friendly home!</title>
     <style>
         body {
@@ -14,7 +14,7 @@
         }
         .container {
             max-width: 1200px;
-            margin: 0 auto;
+            margin: auto;
             padding: 20px;
         }
         header {
@@ -56,31 +56,25 @@
             border-color: #bbb;
         }
         .image-slider {
-            overflow: hidden;
             width: 70%;
-            max-width: 400px;
-            margin: 20px auto;
+            max-width: 600px;
+            margin: 60px auto 20px; /* Adjust margin to prevent title overlap and add bottom margin for spacing */
             position: relative;
         }
         .image-container {
             display: flex;
-            overflow-x: auto;
             scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
+            overflow-x: scroll; /* Allow scrolling */
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on webkit browsers */
         }
         .slide-image {
             width: 100%;
-            height: auto;
-            flex: 0 0 100%;
+            flex: 0 0 auto; /* Adjust flex settings for scrollable content */
             scroll-snap-align: start;
             object-fit: cover;
         }
         .image-container::-webkit-scrollbar {
-            display: none;
-        }
-        .image-container {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+            display: none; /* Hide scrollbar */
         }
         .dot-container {
             text-align: center;
@@ -101,9 +95,9 @@
         }
         .title {
             text-align: center;
-            margin: 80px 0 20px; /* Adjusted margin for visibility */
+            margin-top: 100px; /* Increase margin to accommodate fixed header */
             font-weight: bold;
-            font-size: 24px; 
+            font-size: 24px;
         }
         .description {
             text-align: center;
@@ -130,11 +124,11 @@
                 margin: 10px 0;
             }
             .image-slider {
-                width: 100%; /* Full width for mobile */
+                width: 100%; /* Use full width for mobile */
             }
         }
         body > .container {
-            margin-top: 60px;
+            padding-top: 20px; /* Adjust container padding */
         }
     </style>
 </head>
@@ -152,7 +146,7 @@
         <div class="title">Family and pet friendly home!</div>
         <div class="image-slider">
             <div class="image-container">
-                <img src="PropertyPics/DowntownLittleRockBNB1Landing.webp" alt="Slide 1" class="slide-image">
+                <img src="PropertyPics/DowntownLittleRockBNB1Landing.webp" alt="Slide 1" class="slide-image" style="display:block;">
                 <img src="PropertyPics/DowntownLittleRockBNB2Landing.webp" alt="Slide 2" class="slide-image">
                 <img src="PropertyPics/DowntownLittleRockBNB3Landing.webp" alt="Slide 3" class="slide-image">
                 <img src="PropertyPics/DowntownLittleRockBNB4Landing.webp" alt="Slide 4" class="slide-image">
@@ -194,63 +188,40 @@
     </section>
 </div>
 <script>
-    function degreesToRadians(degrees) {
-        return degrees * (Math.PI / 180);
-    }
-
-    function calculateDistance(lat1, lon1, lat2, lon2) {
-        var R = 3959; // Radius of the Earth in miles
-        var dLat = degreesToRadians(lat2-lat1);
-        var dLon = degreesToRadians(lon2-lon1);
-        var a = 
-            Math.sin(dLat/2) * Math.sin(dLat/2) +
-            Math.cos(degreesToRadians(lat1)) * Math.cos(degreesToRadians(lat2)) * 
-            Math.sin(dLon/2) * Math.sin(dLon/2);
-        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-        return R * c;
-    }
-
-    function showDistance(position) {
-        var distance = calculateDistance(position.coords.latitude, position.coords.longitude, 34.7465, -92.2896);
-        document.getElementById("distanceDisplay").innerHTML = "Distance from your location: About " + distance.toFixed(0) + " miles";
-    }
-
-    function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showDistance, function(error) {
-                document.getElementById("distanceDisplay").innerHTML = "Unable to retrieve your location.";
-            });
-        } else {
-            document.getElementById("distanceDisplay").innerHTML = "Geolocation is not supported by this browser.";
-        }
-    }
-
+    // JavaScript adjusted for initialization and dot navigation
     let slideIndex = 1;
-    showSlides(slideIndex);
+    showSlides(slideIndex); // Initialize slides to show the first one
 
+    // Update the slide shown based on dot click or next/prev
     function currentSlide(n) {
         showSlides(slideIndex = n);
     }
 
     function showSlides(n) {
-        var i;
-        var slides = document.getElementsByClassName("slide-image");
-        var dots = document.getElementsByClassName("dot");
-        if (n > slides.length) {slideIndex = 1}
-        if (n < 1) {slideIndex = slides.length}
+        let i;
+        let slides = document.getElementsByClassName("slide-image");
+        let dots = document.getElementsByClassName("dot");
+
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+
+        // Hide all slides
         for (i = 0; i < slides.length; i++) {
             slides[i].style.display = "none";
         }
+
+        // Remove 'active' state from all dots
         for (i = 0; i < dots.length; i++) {
             dots[i].className = dots[i].className.replace(" active", "");
         }
-        slides[slideIndex-1].style.display = "block";
-        dots[slideIndex-1].className += " active";
+
+        // Show the active slide and dot
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
     }
 
     window.onload = function() {
-        getLocation();
-        showSlides(slideIndex); // Ensure the initial image and dot are set
+        showSlides(slideIndex);
     };
 </script>
 </body>
