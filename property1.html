@@ -55,64 +55,30 @@
             background-color: #eee;
             border-color: #bbb;
         }
-               .image-slider {
+        .image-slider {
             overflow: hidden;
             max-width: 600px;
-            margin: 20px auto;
+            margin: 60px auto; /* Adjusted margin for visibility */
         }
-        
         .image-container {
             display: flex;
             overflow-x: auto;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory; /* Enables snap scrolling */
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
         }
-        
         .slide-image {
             max-width: 100%;
-            flex: 0 0 auto; /* Do not grow, do not shrink, basis auto */
-            transition: transform 0.5s ease;
+            flex: 0 0 auto; /* Prevents images from shrinking */
+            scroll-snap-align: start; /* Ensures each image snaps in place */
+            transition: transform 0.5s ease; /* Smooth transition for images */
         }
-        
         /* Hide scrollbar for cleaner look */
         .image-container::-webkit-scrollbar {
             display: none;
         }
-        
         .image-container {
             -ms-overflow-style: none;  /* IE and Edge */
             scrollbar-width: none;  /* Firefox */
-        }
-
-        .prev-arrow, .next-arrow {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            padding: 16px;
-            color: white;
-            font-weight: bold;
-            background-color: rgba(0, 0, 0, 0.5);
-            border: none;
-        }
-        .next-arrow {
-            right: 0;
-        }
-        .prev-arrow {
-            left: 0;
-        }
-        @media (max-width: 600px) {
-            .slide-image {
-                height: auto; /* Maintain aspect ratio */
-                max-height: 250px; /* Reduce height on smaller screens */
-            }
-        }
-        /* Desktop specific adjustments */
-        @media (min-width: 601px) {
-            .slide-image {
-                width: 50%; /* Drastically reduce size for desktop */
-                margin: auto; /* Center the image */
-            }
         }
         .description {
             text-align: center;
@@ -140,7 +106,7 @@
             }
         }
         body > .container {
-            margin-top: 60px;
+            margin-top: 110px; /* Adjusted to prevent overlap with fixed header */
         }
     </style>
 </head>
@@ -156,7 +122,6 @@
 <div class="container">
     <section>
         <div class="image-slider">
-            <button class="slide-arrow prev-arrow">&#10094;</button>
             <div class="image-container">
                 <img src="PropertyPics/DowntownLittleRockBNB1Landing.webp" alt="Slide 1" class="slide-image">
                 <img src="PropertyPics/DowntownLittleRockBNB2Landing.webp" alt="Slide 2" class="slide-image">
@@ -164,18 +129,17 @@
                 <img src="PropertyPics/DowntownLittleRockBNB4Landing.webp" alt="Slide 4" class="slide-image">
                 <img src="PropertyPics/DowntownLittleRockBNB5Landing.webp" alt="Slide 5" class="slide-image">
             </div>
-            <button class="slide-arrow next-arrow">&#10095;</button>
         </div>
         <div class="description">
             <p>Family and pet friendly home!</p>
-            <p id="distanceDisplay">Calculating distance...</p> <!-- Adjusted for distance display -->
+            <p id="distanceDisplay">Calculating distance...</p>
         </div>
-<div class="categories">
+        <div class="categories">
             <div class="category">
                 <h2>Near This Location</h2>
                 <p>Baseball (insert link)</p>
-                <p>Resteraunts (insert links)</p>
-                <p>Museams (insert link)</p>
+                <p>Restaurants (insert links)</p>
+                <p>Museums (insert link)</p>
             </div>
             <div class="category">
                 <h2>Amenities</h2>
@@ -187,75 +151,45 @@
                 <h2>Booking</h2>
                 <p>Book this property now!</p>
                 <div class="booking-buttons">
-                    <a href="https://www.airbnb.com/rooms/859616286105603942?guests=1&adults=1&s=67&unique_share_id=64e34d22-7525-42d8-bc82-a5c4a87d84e1&source_impression_id=p3_1710787831_YrGcNJ%2BVqCdMiJur" id="airbnb-link">AIRBNB</a>
+                    <a href="https://www.airbnb.com/rooms/859616286105603942?guests=1&adults=1&s=67&unique_share_id=64e34d22-7525-42d8-bc82-a5c4a87d84e1&source_impression_id=p3_1710787831_YrGcNJ%2BVqCdMiJur">AIRBNB</a>
                     <a href="https://www.vrbo.com/3329870?rm1=a2&expediaPropertyId=92434826&referrerId=HOT.HIS.Share.Landed.Copy_Link">VRBO</a>
                 </div>
             </div>
+        </div>
     </section>
 </div>
 <script>
-      // Swipe functionality
-    let touchstartX = 0;
-    let touchendX = 0;
-    
-    const slider = document.querySelector('.image-slider');
-    
-    
-    slider.addEventListener('touchstart', e => {
-        touchstartX = e.changedTouches[0].screenX;
-    });
-    
-    slider.addEventListener('touchend', e => {
-        touchendX = e.changedTouches[0].screenX;
-        handleSwipe();
-    });
-    
-    // Existing functions for slider and distance calculation
-    function calculateDistance(lat1, lon1, lat2, lon2) {
-        var R = 3959; // miles
-        var dLat = degreesToRadians(lat2-lat1);
-        var dLon = degreesToRadians(lon2-lon1);
-        var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(degreesToRadians(lat1)) * Math.cos(degreesToRadians(lat2)) * Math.sin(dLon/2) * Math.sin(dLon/2);
-        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-        return R * c;
-    }
-    
     function degreesToRadians(degrees) {
         return degrees * (Math.PI / 180);
     }
-    
+
+    function calculateDistance(lat1, lon1, lat2, lon2) {
+        var R = 3959; // Radius of the Earth in miles
+        var dLat = degreesToRadians(lat2-lat1);
+        var dLon = degreesToRadians(lon2-lon1);
+        var a = 
+            Math.sin(dLat/2) * Math.sin(dLat/2) +
+            Math.cos(degreesToRadians(lat1)) * Math.cos(degreesToRadians(lat2)) * 
+            Math.sin(dLon/2) * Math.sin(dLon/2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+        return R * c;
+    }
+
+    function showDistance(position) {
+        var distance = calculateDistance(position.coords.latitude, position.coords.longitude, 34.7465, -92.2896); // Example coordinates
+        document.getElementById("distanceDisplay").innerHTML = "Distance from your location: About " + distance.toFixed(0) + " miles";
+    }
+
     function getLocation() {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showDistance);
+            navigator.geolocation.getCurrentPosition(showDistance, function(error) {
+                document.getElementById("distanceDisplay").innerHTML = "Unable to retrieve your location";
+            });
         } else {
             document.getElementById("distanceDisplay").innerHTML = "Geolocation is not supported by this browser.";
         }
     }
-    
-    function showDistance(position) {
-        var distance = calculateDistance(position.coords.latitude, position.coords.longitude, 34.7465, -92.2896);
-        document.getElementById("distanceDisplay").innerHTML = "Distance from your location: About " + distance.toFixed(0) + " miles";
-    }
 
-     let slideIndex = 1;
-    showSlides(slideIndex);
-    
-    function plusSlides(n) {
-      showSlides(slideIndex += n);
-    }
-    
-    function showSlides(n) {
-      let slides = document.getElementsByClassName("slide-image");
-      if (n > slides.length) slideIndex = 1;
-      if (n < 1) slideIndex = slides.length;
-      for (let i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";  
-      }
-      slides[slideIndex-1].style.display = "block";  
-    }
-    
-    document.querySelector('.prev-arrow').addEventListener('click', () => plusSlides(-1));
-    document.querySelector('.next-arrow').addEventListener('click', () => plusSlides(1));
     window.onload = getLocation;
 </script>
 </body>
