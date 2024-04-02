@@ -57,10 +57,9 @@
         }
         .image-slider {
             overflow: hidden;
-            width: 100%; /* Full width for smoother mobile scrolling */
-            max-width: 600px; /* Limiting size on larger screens */
+            width: 70%;
+            max-width: 400px;
             margin: 20px auto;
-            position: relative;
         }
         .image-container {
             display: flex;
@@ -71,24 +70,26 @@
         .slide-image {
             width: 100%;
             height: auto;
-            flex-shrink: 0; /* Ensure flex items do not shrink */
+            flex: 0 0 100%;
             scroll-snap-align: start;
             object-fit: cover;
         }
         .image-container::-webkit-scrollbar {
-            display: none; /* Hide scrollbar for all browsers */
+            display: none;
         }
         .image-container {
-            -ms-overflow-style: none; /* Internet Explorer 10+ */
-            scrollbar-width: none; /* Firefox */
-        }
-        .description, .title {
-            text-align: center;
-            margin-top: 20px;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
         .title {
-            font-weight: bold;
-            font-size: 24px;
+        text-align: center;
+        margin: 20px 0;
+        font-weight: bold;
+        font-size: 24px; 
+            }
+        .description {
+            text-align: center;
+            margin-top: 20px;
         }
         .categories {
             display: flex;
@@ -111,33 +112,6 @@
                 margin: 10px 0;
             }
         }
-        @media (min-width: 601px) {
-            .prev-arrow, .next-arrow {
-                display: block; /* Only show arrows on desktop */
-                cursor: pointer;
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                padding: 16px;
-                color: white;
-                font-weight: bold;
-                background-color: rgba(0, 0, 0, 0.5);
-                border: none;
-            }
-            .next-arrow {
-                right: 0;
-            }
-            .prev-arrow {
-                left: 0;
-            }
-            .image-container {
-                flex-wrap: nowrap;
-                overflow-x: hidden;
-            }
-            .slide-image {
-                display: block; /* Ensure images are displayed */
-            }
-        }
         body > .container {
             margin-top: 110px;
         }
@@ -156,18 +130,15 @@
     <section>
         <div class="title">Family and pet friendly home!</div>
         <div class="image-slider">
-            <button class="slide-arrow prev-arrow">&#10094;</button>
             <div class="image-container">
-                <img src="PropertyPics/DowntownLittleRockBNB1Landing.webp" alt="Slide 1" class="slide-image">
-                <img src="PropertyPics/DowntownLittleRockBNB2Landing.webp" alt="Slide 2" class="slide-image">
-                <img src="PropertyPics/DowntownLittleRockBNB3Landing.webp" alt="Slide 3" class="slide-image">
-                <img src="PropertyPics/DowntownLittleRockBNB4Landing.webp" alt="Slide 4" class="slide-image">
-                <img src="PropertyPics/DowntownLittleRockBNB5Landing.webp" alt="Slide 5" class="slide-image">
+                <img src="PropertyPics/Ruthhouse3-1.webp" alt="Slide 1" class="slide-image">
+                <img src="PropertyPics/Ruthhouse3-2.webp" alt="Slide 2" class="slide-image">
+                <img src="PropertyPics/Ruthhouse3-3.webp" alt="Slide 3" class="slide-image">
+                <img src="PropertyPics/Ruthhouse3-4.webp" alt="Slide 4" class="slide-image">
+                <img src="PropertyPics/Ruthhouse3-5.webp" alt="Slide 5" class="slide-image">
             </div>
-            <button class="slide-arrow next-arrow">&#10095;</button>
         </div>
         <div class="description">
-            <p>Charm & Style in Downtown Little Rock</p>
             <p id="distanceDisplay">Calculating distance...</p>
         </div>
         <div class="categories">
