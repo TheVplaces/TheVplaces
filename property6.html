@@ -3,19 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enjoy a monthly furnished apartment at Downtown LR</title>
+    <title>Chic guest house with EV universal wall connector</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            /* Gradient background */
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             color: #222;
+            min-height: 100vh;
+            position: relative;
+        }
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            box-sizing: border-box;
+            background-color: rgba(255, 255, 255, 0.9); /* Adjusted for content legibility */
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 60px; /* Adjusted for fixed header */
         }
         header {
             height: 50px;
@@ -82,11 +103,11 @@
             scrollbar-width: none;
         }
         .title {
-        text-align: center;
-        margin: 20px 0;
-        font-weight: bold;
-        font-size: 24px; 
-            }
+            text-align: center;
+            margin: 20px 0;
+            font-weight: bold;
+            font-size: 24px; 
+        }
         .description {
             text-align: center;
             margin-top: 20px;
@@ -144,20 +165,20 @@
         <div class="categories">
             <div class="category">
                 <h2>Near This Location</h2>
-                <p>Baseball fields nearby</p>
-                <p>Local restaurants within walking distance</p>
-                <p>Museums for family outings</p>
+                 <p class="review-link"><a href="https://www.google.com/maps/place/Rose+Creek+Plaza/@34.746844,-92.2988344,3a,75y,90t/data=!3m8!1e2!3m6!1sAF1QipO3DeMmrPkEee6nAQtJRRPXc6BMtEPMCBELVUy0!2e10!3e12!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipO3DeMmrPkEee6nAQtJRRPXc6BMtEPMCBELVUy0%3Dw114-h86-k-no!7i4032!8i3024!4m24!1m16!4m15!1m6!1m2!1s0x87d2bb53b581fe31:0xc0852f9d20d4076b!2sDennison+St!2m2!1d-92.298634!2d34.7447561!1m6!1m2!1s0x87d2a134a11f569b:0x3405f5100df35b17!2sLittle+Rock,+Arkansas!2m2!1d-92.2880157!2d34.7444618!3e0!3m6!1s0x87d2bbe17c1e8f47:0xafe063771816c331!8m2!3d34.7467743!4d-92.2987972!10e5!16s%2Fg%2F11pq2v5sjs?entry=ttu">Explore</a>The Rose Creek Plaza</p>
+                 <p class="review-link"><a href="https://vinosbrewpub.com/">Restaurants</a> Nearby</p>
+                 <p class="review-link"><a href="https://littlerockhall.com/">Live Music</a></p>
             </div>
             <div class="category">
                 <h2>Amenities</h2>
                 <p>High-speed Wi-Fi</p>
-                <p>Netflix subscription included</p>
-                <p>2 cozy bedrooms</p>
+                <p>Smart TV</p>
+                <p>Full Kitchen and Dishwasher</p>
             </div>
             <div class="category">
-                <h2>Booking</h2>
+               <h2>Booking</h2>
                 <p>Reserve your stay now!</p>
-                <div class="booking-buttons">
+                 <div class="booking-buttons">
                     <a href="https://www.airbnb.com/rooms/44593642?guests=1&adults=1&s=67&unique_share_id=e583b12a-c4bc-48f3-8d1a-90455355ba3e&source_impression_id=p3_1710787838_dGZ7wVADPAYzAr%2Fc">AIRBNB</a>
                     <a href="https://www.vrbo.com/2221943?rm1=a2&expediaPropertyId=65155789&referrerId=HOT.HIS.Share.Landed.Copy_Link">VRBO</a>
                 </div>
@@ -183,7 +204,7 @@
     }
 
     function showDistance(position) {
-        var distance = calculateDistance(position.coords.latitude, position.coords.longitude, 34.7465, -92.2896);
+        var distance = calculateDistance(position.coords.latitude, position.coords.longitude, 34.7375, -92.2816);
         document.getElementById("distanceDisplay").innerHTML = "Distance from your location: About " + distance.toFixed(0) + " miles";
     }
 
