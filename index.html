@@ -45,14 +45,13 @@
             font-size: 24px;
         }
         .realtor-info {
-            text-align: center; /* Centered Ruth & Jaime Vasquez and their description */
+            text-align: center; /* Center text */
         }
         .realtor-info img {
             display: block;
-            margin: 0 auto; /* Ensure logo is centered */
-            border-radius: 50%;
-            max-width: 100px; /* Adjusted for logo sizing */
-            height: auto;
+            margin: 0 auto; /* Center image */
+            max-width: 100px; /* Adjust to fit your content; was 100px for a circle */
+            height: auto; /* Maintain aspect ratio, remove if setting a fixed height */
         }
         .button-container {
             display: flex;
@@ -95,7 +94,7 @@
     </header>
     <div class="container">
         <div class="realtor-info">
-            <img src="PicturesGeneral/ruth_logo.png" alt="Realtor Ruth's Headshot">
+            <img src="PicturesGeneral/ruth_logo.png" alt="Realtor Ruth's Headshot" style="width: 100px; height: 100px;"> <!-- Adjusted for square shape -->
             <h2>Ruth & Jaime Vasquez</h2>
             <p>We are Ruth and Jaime, your dedicated hosts, here to assist you with all your short term rental needs.</p>
             <p>Are you considering a vacation or looking for properties in Arkansas? Arkansas offers beautiful landscapes, friendly communities, and a variety of recreational activities for all ages.</p>
