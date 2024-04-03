@@ -3,19 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Family and pet friendly home!</title>
+    <title>Chic guest house with EV universal wall connector</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            /* Gradient background */
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             color: #222;
+            min-height: 100vh;
+            position: relative;
+        }
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            box-sizing: border-box;
+            background-color: rgba(255, 255, 255, 0.9); /* Adjusted for content legibility */
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 60px; /* Adjusted for fixed header */
         }
         header {
             height: 50px;
@@ -82,11 +103,11 @@
             scrollbar-width: none;
         }
         .title {
-        text-align: center;
-        margin: 20px 0;
-        font-weight: bold;
-        font-size: 24px; 
-            }
+            text-align: center;
+            margin: 20px 0;
+            font-weight: bold;
+            font-size: 24px; 
+        }
         .description {
             text-align: center;
             margin-top: 20px;
