@@ -3,19 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fantastic house between Hillcrest and Downtown LR</title>
+    <title>Chic guest house with EV universal wall connector</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            /* Gradient background */
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             color: #222;
+            min-height: 100vh;
+            position: relative;
+        }
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            box-sizing: border-box;
+            background-color: rgba(255, 255, 255, 0.9); /* Adjusted for content legibility */
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 60px; /* Adjusted for fixed header */
         }
         header {
             height: 50px;
@@ -82,11 +103,11 @@
             scrollbar-width: none;
         }
         .title {
-        text-align: center;
-        margin: 20px 0;
-        font-weight: bold;
-        font-size: 24px; 
-            }
+            text-align: center;
+            margin: 20px 0;
+            font-weight: bold;
+            font-size: 24px; 
+        }
         .description {
             text-align: center;
             margin-top: 20px;
@@ -144,20 +165,20 @@
         <div class="categories">
             <div class="category">
                 <h2>Near This Location</h2>
-                <p>Baseball fields nearby</p>
-                <p>Local restaurants within walking distance</p>
-                <p>Museums for family outings</p>
+                 <p class="review-link"><a href="https://www.alltrails.com/trail/us/arkansas/knoop-park-trail">Explore</a>The Hillcrest Trail</p>
+                 <p class="review-link"><a href="https://littlerockpantry.com/">Restaurants</a> Nearby</p>
+                 <p class="review-link"><a href="https://www.arkansas.com/little-rock/shopping-wellness/hillcrest-historic-district">Historic District</a> For Family Outings</p>
             </div>
             <div class="category">
                 <h2>Amenities</h2>
                 <p>High-speed Wi-Fi</p>
-                <p>Netflix subscription included</p>
-                <p>2 cozy bedrooms</p>
+                <p>Smart TV</p>
+                <p>Full Kitchen and Dishwasher</p>
             </div>
             <div class="category">
                 <h2>Booking</h2>
                 <p>Reserve your stay now!</p>
-                <div class="booking-buttons">
+                 <div class="booking-buttons">
                     <a href="https://www.airbnb.com/rooms/22142666?guests=1&adults=1&s=67&unique_share_id=0e246405-c68b-43b2-b547-b823a64b7ff6&source_impression_id=p3_1710787835_pF3WTGcDczeju%2FtB">AIRBNB</a>
                     <a href="https://www.vrbo.com/4657269ha?rm1=a2&expediaPropertyId=30087542&referrerId=HOT.HIS.Share.Landed.Copy_Link">VRBO</a>
                 </div>
@@ -183,7 +204,7 @@
     }
 
     function showDistance(position) {
-        var distance = calculateDistance(position.coords.latitude, position.coords.longitude, 34.7465, -92.2896);
+        var distance = calculateDistance(position.coords.latitude, position.coords.longitude, 34.7375, -92.2816);
         document.getElementById("distanceDisplay").innerHTML = "Distance from your location: About " + distance.toFixed(0) + " miles";
     }
 
