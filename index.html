@@ -5,18 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The V Places</title>
     <style>
-        /* Add your CSS styles here */
+        /* CSS styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             color: #333;
+        }
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         header {
             background-color: #333;
@@ -25,23 +41,19 @@
             text-align: center;
         }
         header h1 {
-            font-size: 24px; /* Adjust this value to make the heading smaller */
+            margin: 0;
+            font-size: 24px;
         }
         .realtor-info {
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        .realtor-contact {
-            text-align: center;
-            margin-top: 30px;
+            text-align: center; /* Centered Ruth & Jaime Vasquez and their description */
         }
         .realtor-info img {
-            max-width: 300px; /* Set width to 100% to make it a full-sized square */
-            height: auto; /* Maintain aspect ratio */
-            margin-bottom: 20px;
+            display: block;
+            margin: 0 auto; /* Ensure logo is centered */
+            border-radius: 50%;
+            max-width: 100px; /* Adjusted for logo sizing */
+            height: auto;
         }
-
         .button-container {
             display: flex;
             justify-content: center;
@@ -51,14 +63,29 @@
             display: inline-block;
             margin: 0 10px;
             padding: 10px 20px;
-            background-color: #333;
             color: #fff;
             text-decoration: none;
             border-radius: 5px;
-            transition: background-color 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: linear-gradient(45deg, #23a6d5, #23d5ab, #ee7752, #e73c7e);
+            background-size: 300% 100%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            animation: gradientButton 3s ease infinite;
+        }
+        @keyframes gradientButton {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
         .button-container a:hover {
-            background-color: #555;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
@@ -75,7 +102,7 @@
         </div>
         <div class="button-container">
             <a href="LittleRockProperties1.html">View Properties</a>
-            <a href="contact.html">Contact Us</a> <!-- Changed link to contact.html -->
+            <a href="contact.html">Contact Us</a>
         </div>
     </div>
 </body>
