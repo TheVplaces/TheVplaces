@@ -3,19 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Family and pet friendly home!</title>
+    <title>Monthly furnished Apartment in Downtown LR!</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            /* Gradient background */
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             color: #222;
+            min-height: 100vh;
+            position: relative;
+        }
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            box-sizing: border-box;
+            background-color: rgba(255, 255, 255, 0.9); /* Adjusted for content legibility */
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 60px; /* Adjusted for fixed header */
         }
         header {
             height: 50px;
@@ -82,11 +103,11 @@
             scrollbar-width: none;
         }
         .title {
-        text-align: center;
-        margin: 20px 0;
-        font-weight: bold;
-        font-size: 24px; 
-            }
+            text-align: center;
+            margin: 20px 0;
+            font-weight: bold;
+            font-size: 24px; 
+        }
         .description {
             text-align: center;
             margin-top: 20px;
@@ -128,14 +149,14 @@
 </header>
 <div class="container">
     <section>
-        <div class="title">Family and pet friendly home!</div>
+        <div class="title">Enjoy a monthly furnished apartment at Downtown LR</div>
         <div class="image-slider">
             <div class="image-container">
-                <img src="PropertyPics/Ruthhouse8-1.webp" alt="Slide 1" class="slide-image">
-                <img src="PropertyPics/Ruthhouse8-2.webp" alt="Slide 2" class="slide-image">
-                <img src="PropertyPics/Ruthhouse8-3.webp" alt="Slide 3" class="slide-image">
-                <img src="PropertyPics/Ruthhouse8-4.webp" alt="Slide 4" class="slide-image">
-                <img src="PropertyPics/Ruthhouse8-5.webp" alt="Slide 5" class="slide-image">
+                <img src="PropertyPics/Ruthhouse7-1.webp" alt="Slide 1" class="slide-image">
+                <img src="PropertyPics/Ruthhouse7-2.webp" alt="Slide 2" class="slide-image">
+                <img src="PropertyPics/Ruthhouse7-3.webp" alt="Slide 3" class="slide-image">
+                <img src="PropertyPics/Ruthhouse7-4.webp" alt="Slide 4" class="slide-image">
+                <img src="PropertyPics/Ruthhouse7-5.webp" alt="Slide 5" class="slide-image">
             </div>
         </div>
         <div class="description">
@@ -144,22 +165,22 @@
         <div class="categories">
             <div class="category">
                 <h2>Near This Location</h2>
-                <p>Baseball fields nearby</p>
-                <p>Local restaurants within walking distance</p>
-                <p>Museums for family outings</p>
+                 <p class="review-link"><a href="https://www.google.com/maps/place/Rose+Creek+Trailhead/@34.7453459,-92.3014049,16z/data=!4m14!1m7!3m6!1s0x87d2bb53ce927763:0x85d1727c439c5e27!2s2223+W+7th+St+a,+Little+Rock,+AR+72201!3b1!8m2!3d34.7446016!4d-92.2983747!3m5!1s0x87d2bbfa3e64a0af:0x264704a6fd5c0248!8m2!3d34.746794!4d-92.300933!16s%2Fg%2F11pq70p2wd?entry=ttu">Explore </a>The Rose Creek Trail</p>
+                 <p class="review-link"><a href="https://samstap.com/">Restaurants</a> Nearby</p>
+                 <p class="review-link"><a href="http://www.beerknurd.com/locations/little-rock-flying-saucer">Beer!</a></p>
             </div>
             <div class="category">
                 <h2>Amenities</h2>
                 <p>High-speed Wi-Fi</p>
-                <p>Netflix subscription included</p>
-                <p>2 cozy bedrooms</p>
+                <p>Smart TV</p>
+                <p>Full Kitchen and Dishwasher</p>
             </div>
             <div class="category">
-                <h2>Booking</h2>
+               <h2>Booking</h2>
                 <p>Reserve your stay now!</p>
-                <div class="booking-buttons">
-                    <a href="https://www.airbnb.com/rooms/859616286105603942?guests=1&adults=1&s=67&unique_share_id=64e34d22-7525-42d8-bc82-a5c4a87d84e1&source_impression_id=p3_1710787831_YrGcNJ%2BVqCdMiJur">AIRBNB</a>
-                    <a href="https://www.vrbo.com/3329870?rm1=a2&expediaPropertyId=92434826&referrerId=HOT.HIS.Share.Landed.Copy_Link">VRBO</a>
+                 <div class="booking-buttons">
+                    <a href="https://www.airbnb.com/rooms/44568459?guests=1&adults=1&s=67&unique_share_id=d7ba4a94-4274-4c43-a214-bc3a64d1fd90&source_impression_id=p3_1712124510_7pds2gohQko4EKGk">AIRBNB</a>
+                    <a href="https://www.vrbo.com/2221943?rm1=a2&expediaPropertyId=65155789&referrerId=HOT.HIS.Share.Landed.Copy_Link">VRBO</a>
                 </div>
             </div>
         </div>
@@ -183,7 +204,7 @@
     }
 
     function showDistance(position) {
-        var distance = calculateDistance(position.coords.latitude, position.coords.longitude, 34.7465, -92.2896);
+        var distance = calculateDistance(position.coords.latitude, position.coords.longitude, 34.7375, -92.2816);
         document.getElementById("distanceDisplay").innerHTML = "Distance from your location: About " + distance.toFixed(0) + " miles";
     }
 
